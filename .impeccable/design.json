@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-04T19:40:06Z",
+  "title": "Design System: Node Marketplace",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#0a0a0a",
+          "#1f1f1f",
+          "#3d3d3d",
+          "#5c5c5c",
+          "#7a7a7a",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#f5f5f5"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#e8e8e8",
+          "#eeeeee",
+          "#f2f2f2",
+          "#f5f5f5",
+          "#fafafa",
+          "#fcfcfc",
+          "#fefefe",
+          "#ffffff"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#eeeeee",
+        "tonalRamp": [
+          "#9a9a9a",
+          "#b0b0b0",
+          "#c4c4c4",
+          "#d6d6d6",
+          "#e2e2e2",
+          "#eeeeee",
+          "#f4f4f4",
+          "#fafafa"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#4b5563",
+        "tonalRamp": [
+          "#111827",
+          "#1f2937",
+          "#374151",
+          "#4b5563",
+          "#6b7280",
+          "#9ca3af",
+          "#d1d5db",
+          "#f3f4f6"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#0a0a0a",
+          "#1f1f1f",
+          "#3d3d3d",
+          "#5c5c5c",
+          "#7a7a7a",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#f5f5f5"
+        ]
+      },
+      "success": {
+        "role": "secondary",
+        "displayName": "Success",
+        "canonical": "#027a48",
+        "tonalRamp": [
+          "#01462a",
+          "#015c37",
+          "#027a48",
+          "#039855",
+          "#12b76a",
+          "#6ce9a6",
+          "#a6f4c5",
+          "#ecfdf3"
+        ]
+      },
+      "success-soft": {
+        "role": "secondary",
+        "displayName": "Success Soft",
+        "canonical": "#ecfdf3",
+        "tonalRamp": [
+          "#027a48",
+          "#039855",
+          "#12b76a",
+          "#6ce9a6",
+          "#a6f4c5",
+          "#d1fadf",
+          "#ecfdf3",
+          "#f6fef9"
+        ]
+      },
+      "error": {
+        "role": "secondary",
+        "displayName": "Error",
+        "canonical": "#b42318",
+        "tonalRamp": [
+          "#7a271a",
+          "#912018",
+          "#b42318",
+          "#d92d20",
+          "#f04438",
+          "#fda29b",
+          "#fecdca",
+          "#fef3f2"
+        ]
+      },
+      "error-soft": {
+        "role": "secondary",
+        "displayName": "Error Soft",
+        "canonical": "#fef3f2",
+        "tonalRamp": [
+          "#b42318",
+          "#d92d20",
+          "#f04438",
+          "#fda29b",
+          "#fecdca",
+          "#fee4e2",
+          "#fef3f2",
+          "#fffbfa"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles: text-2xl on small screens, text-3xl from md up."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Stat callouts and dense section emphasis at text-2xl bold."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary reading and control labels at text-base."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Meta, helpers, and secondary chrome at text-sm Graphite."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "accordion",
+        "value": "0.2s ease-out",
+        "purpose": "Relume accordion open/close only; product UI does not add decorative motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "480px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "xxl", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-filled Relume primary action with hard border.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Install</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #000000; color: #ffffff; padding: 12px 24px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; transition: opacity 0.15s ease; } .ds-btn-primary:hover { opacity: 0.92; } .ds-btn-primary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-btn-primary:active { opacity: 0.85; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Paper-filled bordered button used for most in-flow actions.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">View details</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 12px 24px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; transition: background 0.15s ease; } .ds-btn-secondary:hover { background: #eeeeee; } .ds-btn-secondary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-btn-secondary:active { background: #e5e5e5; }"
+    },
+    {
+      "name": "Secondary Button Sm",
+      "kind": "button",
+      "refersTo": "button-secondary-sm",
+      "description": "Compact secondary control for list rows and chrome.",
+      "html": "<button class=\"ds-btn-secondary-sm\" type=\"button\">Manage</button>",
+      "css": ".ds-btn-secondary-sm { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 20px; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; } .ds-btn-secondary-sm:hover { background: #eeeeee; } .ds-btn-secondary-sm:focus-visible { outline: 2px solid #000000; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Badge",
+      "kind": "chip",
+      "refersTo": "badge-outline",
+      "description": "Default meta/status chip with Ink rule.",
+      "html": "<span class=\"ds-badge-outline\">Compatible</span>",
+      "css": ".ds-badge-outline { display: inline-flex; align-items: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 2px 8px; font: 400 0.75rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; }"
+    },
+    {
+      "name": "Muted Badge",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Mist-filled badge for muted or warning-adjacent labels.",
+      "html": "<span class=\"ds-badge-secondary\">Queued</span>",
+      "css": ".ds-badge-secondary { display: inline-flex; align-items: center; border: 1px solid transparent; background: #eeeeee; color: #000000; padding: 2px 8px; font: 400 0.75rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square Relume field with Ink border and Paper fill.",
+      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"Search apps\" />",
+      "css": ".ds-input { display: block; width: 100%; min-height: 44px; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 12px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; } .ds-input::placeholder { color: #666666; } .ds-input:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Content Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Signature bordered Paper panel used for apps, nodes, and sections.",
+      "html": "<article class=\"ds-panel\"><div class=\"ds-panel-icon\" aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\"/></svg></div><div><h3 class=\"ds-panel-title\">Atlas Storage</h3><p class=\"ds-panel-meta\">Storage · 3 compatible nodes</p></div></article>",
+      "css": ".ds-panel { display: flex; gap: 12px; align-items: flex-start; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 16px; border-radius: 0; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-panel-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0; border: 1px solid #000000; background: #eeeeee; } .ds-panel-title { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.4; } .ds-panel-meta { margin: 4px 0 0; font-size: 0.875rem; color: #4b5563; }"
+    },
+    {
+      "name": "State Panel",
+      "kind": "custom",
+      "refersTo": "panel-muted",
+      "description": "Mist empty/error/offline callout with clear next action.",
+      "html": "<div class=\"ds-state-panel\"><h2 class=\"ds-state-title\">No installed apps</h2><p class=\"ds-state-body\">Install an app from the marketplace to manage it here.</p><button class=\"ds-btn-secondary\" type=\"button\">Browse marketplace</button></div>",
+      "css": ".ds-state-panel { border: 1px solid #000000; background: #eeeeee; color: #000000; padding: 24px; border-radius: 0; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-state-title { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.4; } .ds-state-body { margin: 8px 0 16px; font-size: 0.875rem; color: #4b5563; } .ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 20px; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; } .ds-btn-secondary:hover { background: #f5f5f5; } .ds-btn-secondary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; }"
+    },
+    {
+      "name": "Sidebar Nav Item",
+      "kind": "nav",
+      "refersTo": "button-secondary",
+      "description": "Sidebar row with Boxicon-style mark; filled when active.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-item\" href=\"#\"><svg class=\"ds-nav-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M4 10l8-6 8 6v10H4V10z\"/></svg><span>Marketplace</span></a><a class=\"ds-nav-item is-active\" href=\"#\" aria-current=\"page\"><svg class=\"ds-nav-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M4 10l8-6 8 6v10H4V10z\"/></svg><span>Installed Apps</span></a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 4px; width: 220px; padding: 8px; border: 1px solid #000000; background: #ffffff; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-nav-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: #000000; text-decoration: none; border-radius: 0; } .ds-nav-item:hover { background: #eeeeee; } .ds-nav-item:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-nav-item.is-active { background: #eeeeee; font-weight: 600; } .ds-nav-icon { flex-shrink: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Desk",
+    "overview": "This prototype’s visual system is a Relume black-and-white wireframe: crisp ink on paper, hard rules, and gray secondary notes. Structure and state readability outrank decoration. Surfaces read like engineering sheets pinned side by side—panels are bordered, flat, and informationally dense without ornamental chrome.\n\nPersonality is operator-facing and austere. Hierarchy comes from type weight, border weight, and Paper vs Mist fills—not color theater, glass, or soft elevation. Status greens and reds appear only when the product must communicate success, failure, or eligibility. Boxicons (outline by default, filled for active nav) are the only icon language.\n\nConfirmed rejection: high-fidelity crypto polish, purple/glow dashboards, soft UI cards with multi-layer shadows, and any parallel component library beside Relume UI.",
+    "keyCharacteristics": [
+      "Flat Paper/Mist panels framed by hard Ink rules",
+      "System sans typography with bold page titles and compact body/meta",
+      "Relume Button/Badge/Input/Table/Dialog/Sheet/Sidebar primitives",
+      "Status color reserved for success/error semantics only",
+      "Coarse-pointer touch targets (~44px) without changing desktop density"
+    ],
+    "rules": [
+      {
+        "name": "The Ink Economy Rule",
+        "body": "Color that is not Ink, Paper, Mist, or Graphite appears only for success/error semantics—never as decorative accent bands or marketing gradients.",
+        "section": "colors"
+      },
+      {
+        "name": "The Graphite Legibility Rule",
+        "body": "Secondary text uses Graphite (#4b5563), not Relume’s default #aaa, so meta copy stays AA-capable on Paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Do not introduce display serifs, mono stacks, or marketing typefaces while the Relume wireframe commitment holds.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sheet Stack Rule",
+        "body": "Content is a vertical stack of bordered panels—not card carousels, hero bands, or dashboard widget chrome.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Sheet Rule",
+        "body": "No soft drop shadows on product panels, cards, sticky bars, or prototype chrome. If something must sit above the page, thicken the border and keep the fill Paper or Mist.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hard Edge Rule",
+        "body": "Do not round product panels, buttons, badges, or inputs for polish. Square geometry is the wireframe signal.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do compose screens from bordered Paper/Mist panels with Ink rules and Relume primitives.",
+      "Do use Graphite for secondary text so meta copy stays readable on Paper.",
+      "Do reserve Success/Error colors for semantic status only.",
+      "Do keep product chrome flat (shadow-none) and square-cornered.",
+      "Do use Boxicons only; outline by default, filled for active navigation."
+    ],
+    "donts": [
+      "Don't introduce a second UI library, soft-UI card language, or decorative gradients.",
+      "Don't restore Relume’s default #aaa secondary text on white backgrounds.",
+      "Don't treat partial success, incompatibility, or offline queueing with vague color-only cues—pair status color with explicit copy.",
+      "Don't add ambient shadows, glassmorphism, or rounded-full pills to “polish” the wireframe.",
+      "Don't invent a production brand palette here; the binding constraint remains the Relume B&W wireframe until PRODUCT.md changes."
+    ]
+  }
+}

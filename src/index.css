@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@layer utilities {
+  /*
+   * Coarse pointers (phones/tablets): enlarge interactive controls to ~44px
+   * without changing fine-pointer desktop density.
+   */
+  @media (pointer: coarse) {
+    button,
+    [type="button"],
+    [type="submit"],
+    [role="button"],
+    a.inline-flex {
+      min-height: 2.75rem;
+    }
+
+    .touch-target {
+      min-height: 2.75rem;
+      min-width: 2.75rem;
+    }
+  }
+}
