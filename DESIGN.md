@@ -1,225 +1,291 @@
 ---
 name: Node Marketplace
-description: Relume black-and-white wireframe system for a fleet-ops marketplace prototype.
+description: Vercel-inspired Operate UI — Geist, soft borders, achromatic canvas, blue focus only.
 colors:
-  ink: "#000000"
-  paper: "#ffffff"
-  mist: "#eeeeee"
-  graphite: "#4b5563"
-  rule: "#000000"
-  success: "#027a48"
-  success-soft: "#ecfdf3"
-  error: "#b42318"
-  error-soft: "#fef3f2"
+  canvas: "#FAFAFA"
+  elevated: "#FFFFFF"
+  recessed: "#F2F2F2"
+  hover: "#EBEBEB"
+  border: "#EAEAEA"
+  border-strong: "#D4D4D4"
+  foreground: "#171717"
+  secondary: "#666666"
+  muted: "#8F8F8F"
+  nav: "#4D4D4D"
+  accent: "#0072F5"
+  accent-focus: "#005FCC"
+  accent-soft: "rgba(0, 114, 245, 0.16)"
+  success: "#398E4A"
+  success-dot: "#45A557"
+  success-soft: "#ECFDF3"
+  warning: "#FF990A"
+  error: "#E5484D"
+  error-soft: "#FEF3F2"
 typography:
-  headline:
-    fontFamily: "ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1.75rem"
-    fontWeight: 700
-    lineHeight: 1.4
-    letterSpacing: "normal"
+  display:
+    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.04em"
   title:
-    fontFamily: "ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 700
-    lineHeight: 1.4
-    letterSpacing: "normal"
+    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.03em"
   body:
-    fontFamily: "ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "normal"
   label:
-    fontFamily: "ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.43
+    letterSpacing: "normal"
+  caption:
+    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.33
+    letterSpacing: "normal"
+  mono:
+    fontFamily: "Geist Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "0.8125rem"
+    fontWeight: 500
+    lineHeight: 1.54
     letterSpacing: "normal"
 rounded:
-  none: "0px"
+  sm: "6px"
+  md: "8px"
+  lg: "12px"
+  xl: "16px"
+  full: "9999px"
 spacing:
   xs: "0.5rem"
   sm: "0.75rem"
   md: "1rem"
   lg: "1.5rem"
+  xl: "2rem"
 components:
   button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-    rounded: "{rounded.none}"
-    padding: "12px 24px"
+    backgroundColor: "{colors.foreground}"
+    textColor: "{colors.elevated}"
+    rounded: "{rounded.sm}"
+    padding: "8px 12px"
+    height: "40px"
   button-primary-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.foreground}"
+    textColor: "{colors.elevated}"
   button-secondary:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "12px 24px"
-  button-secondary-sm:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "8px 20px"
-  badge-outline:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "2px 8px"
-  badge-secondary:
-    backgroundColor: "{colors.mist}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.elevated}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.sm}"
+    padding: "8px 12px"
+    height: "40px"
+  button-secondary-hover:
+    backgroundColor: "{colors.hover}"
+    textColor: "{colors.foreground}"
+  button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.nav}"
+    rounded: "{rounded.sm}"
+    padding: "8px 12px"
+  button-ghost-hover:
+    backgroundColor: "{colors.hover}"
+    textColor: "{colors.foreground}"
+  badge:
+    backgroundColor: "{colors.recessed}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.full}"
     padding: "2px 8px"
   panel:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.elevated}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.lg}"
     padding: "16px"
   panel-muted:
-    backgroundColor: "{colors.mist}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.recessed}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.lg}"
     padding: "16px"
   input:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    height: "44px"
+    backgroundColor: "{colors.elevated}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.sm}"
+    height: "40px"
     padding: "8px 12px"
+  nav-item:
+    backgroundColor: "transparent"
+    textColor: "{colors.nav}"
+    rounded: "{rounded.sm}"
+    padding: "8px 10px"
+  nav-item-active:
+    backgroundColor: "{colors.hover}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.sm}"
+    padding: "8px 10px"
 ---
 
 # Design System: Node Marketplace
 
 ## Overview
 
-**Creative North Star: "The Blueprint Desk"**
+**Creative North Star: "Quiet Deploy"**
 
-This prototype’s visual system is a Relume black-and-white wireframe: crisp ink on paper, hard rules, and gray secondary notes. Structure and state readability outrank decoration. Surfaces read like engineering sheets pinned side by side—panels are bordered, flat, and informationally dense without ornamental chrome.
+The Node Marketplace prototype speaks Vercel’s Operate language: an achromatic canvas where hierarchy comes from weight, spacing, and soft edges—not ornament. Geist carries every UI string; Geist Mono is reserved for addresses, hashes, and code-like data. Blue is the only interactive accent. Status greens, ambers, and reds appear as compact indicators or soft-tinted badges, never as decorative fills.
 
-Personality is operator-facing and austere. Hierarchy comes from type weight, border weight, and Paper vs Mist fills—not color theater, glass, or soft elevation. Status greens and reds appear only when the product must communicate success, failure, or eligibility. Boxicons (outline by default, filled for active nav) are the only icon language.
+Personality is developer-tool quiet confidence. Screens should feel engineered and scannable—sidebar nav with soft hover fills, elevated white panels edged by shadow-as-border, primary actions in near-black. Density is comfortable (~40px controls) rather than sparse marketing whitespace or cramped wireframe tables.
 
-Confirmed rejection: high-fidelity crypto polish, purple/glow dashboards, soft UI cards with multi-layer shadows, and any parallel component library beside Relume UI.
+Confirmed rejection: Relume hard-black square wireframe as the identity, purple/glow crypto dashboards, multi-layer colored soft-UI shadows, and decorative gradients.
 
 **Key Characteristics:**
-- Flat Paper/Mist panels framed by hard Ink rules
-- System sans typography with bold page titles and compact body/meta
-- Relume Button/Badge/Input/Table/Dialog/Sheet/Sidebar primitives
-- Status color reserved for success/error semantics only
-- Coarse-pointer touch targets (~44px) without changing desktop density
+- Achromatic `#FAFAFA` canvas with elevated white panels
+- Geist 400/500/600 only; Geist Mono for data
+- Shadow-as-border elevation and double-ring blue focus
+- Soft 6–12px radii; pill radius for badges and status dots
+- Boxicons outline by default; filled only for active nav
 
 ## Colors
 
-A strict ink-and-paper palette with Graphite for secondary reading contrast, plus system success/error for state only.
+The palette is fundamentally achromatic: four grayscale stops for surface and text, one blue for interaction, and compact semantic colors for status.
 
 ### Primary
-- **Ink** (`colors.ink`): Primary text, primary button fills, hard borders, and inverse treatments. The single action/identity color of the wireframe.
+- **Operate Blue** (`#0072F5`): Links, focus rings, and interactive emphasis. Rarity is the point—never a large background band.
+- **Accent Focus** (`#005FCC`): Darker blue for pressed/focus outline variants.
+- **Accent Soft** (`rgba(0, 114, 245, 0.16)`): Selected-row tint and subtle interactive washes only.
+
+### Secondary
+- **Success** (`#398E4A`) / **Success Dot** (`#45A557`) / **Success Soft** (`#ECFDF3`): Compatible/online status at indicator or badge scale.
+- **Warning** (`#FF990A`): Caution indicators only.
+- **Error** (`#E5484D`) / **Error Soft** (`#FEF3F2`): Failure states and compact error surfaces.
 
 ### Neutral
-- **Paper** (`colors.paper`): Default page and panel background; primary-button text on Ink.
-- **Mist** (`colors.mist`): Secondary panels, sticky bars, muted badges, and tonal layering without shadows.
-- **Graphite** (`colors.graphite`): Secondary text (project override of Relume `#aaa` for AA contrast on white).
-- **Rule** (`colors.rule`): Explicit border token alias of Ink for 1px (and occasional 2px) panel/frame strokes.
+- **Canvas** (`#FAFAFA`): Page and sidebar background.
+- **Elevated** (`#FFFFFF`): Cards, sheets, inputs, menus.
+- **Recessed** (`#F2F2F2`): Inset wells, muted panels, badge fills.
+- **Hover** (`#EBEBEB`): Nav/button hover and active fills.
+- **Border** (`#EAEAEA`) / **Border Strong** (`#D4D4D4`): Separators and stronger control edges.
+- **Foreground** (`#171717`): Primary text and primary button fill.
+- **Secondary** (`#666666`): Supporting copy.
+- **Muted** (`#8F8F8F`): Helpers, timestamps, disabled-adjacent meta.
+- **Nav** (`#4D4D4D`): Default navigation and secondary control labels.
 
-### Secondary (status only)
-- **Success** (`colors.success`) on **Success Soft** (`colors.success-soft`): Positive status text/fills (compatible, complete, earning).
-- **Error** (`colors.error`) on **Error Soft** (`colors.error-soft`): Failure and blocking status text/fills.
+### Named Rules
+**The Blue Economy Rule.** Blue is for links, focus, and interactive emphasis—never large decorative fills. Audit: if blue occupies more than a thin control or text run, remove it.
 
-**The Ink Economy Rule.** Color that is not Ink, Paper, Mist, or Graphite appears only for success/error semantics—never as decorative accent bands or marketing gradients.
-
-**The Graphite Legibility Rule.** Secondary text uses Graphite (`#4b5563`), not Relume’s default `#aaa`, so meta copy stays AA-capable on Paper.
+**The Indicator Scale Rule.** Status color stays at ~10px dots or compact badges; soft tints (`success-soft`, `error-soft`) wrap only small status chips, not full-width banners unless the product state truly requires interruption.
 
 ## Typography
 
-**Display Font:** ui-sans-serif / system-ui (browser default stack)
-**Body Font:** same system sans stack
-**Label/Mono Font:** same stack (no dedicated mono commitment in the prototype)
+**Display / UI Font:** Geist (with `ui-sans-serif, system-ui, sans-serif`)
+**Mono Font:** Geist Mono (with `ui-monospace, SFMono-Regular, Menlo, monospace`)
 
-**Character:** Utilitarian and unstyled—type carries hierarchy through size and weight only, matching wireframe clarity over brand typography.
+**Character:** Engineered and precise. Tight tracking on display and title sizes creates density without shouting; body and labels stay open and readable.
 
 ### Hierarchy
-- **Headline** (700, 1.75rem / `text-3xl` at `md+`, line-height 1.4): Page titles on content screens (`text-2xl` → `md:text-3xl`).
-- **Title** (700, 1.5rem / `text-2xl`, line-height 1.4): Stat callouts and dense section emphasis.
-- **Body** (400, 1rem / `text-base`, line-height 1.5): Primary reading and control labels in chrome.
-- **Label** (400, 0.875rem / `text-sm`, line-height 1.5): Meta, helper text, sidebar subtitle, and secondary chrome (`text-text-secondary` → Graphite).
+- **Display** (600, 2rem, line-height 1.15, tracking `-0.04em`): Page-level titles in app chrome.
+- **Title** (600, 1.25rem, line-height 1.3, tracking `-0.03em`): Section and panel headings.
+- **Body** (400, 1rem, line-height 1.5): Primary reading text; keep lines readable (~65–75ch where prose runs long).
+- **Label** (400, 0.875rem, line-height 1.43): Form labels, nav items, button labels, chrome meta. Use 500 for active nav emphasis.
+- **Caption** (400, 0.75rem, line-height 1.33): Dense helpers and timestamps.
+- **Mono** (500, 0.8125rem, line-height 1.54): Wallet addresses, IDs, hashes, code snippets.
 
-**The One Family Rule.** Do not introduce display serifs, mono stacks, or marketing typefaces while the Relume wireframe commitment holds.
+### Named Rules
+**The Three-Weight Rule.** Use 400, 500, and 600 only. Do not introduce 700 for hierarchy—size and spacing carry emphasis.
+
+**The Mono Reservation Rule.** Geist Mono is for machine-readable strings only, never for marketing headlines or body prose.
 
 ## Layout
 
-App chrome is a Relume Sidebar + inset main: brand/nav in the sidebar, sticky top bar (`h-16`) with page context, content in `main` with `p-4` / `md:p-6`. Vertical rhythm inside pages is typically `gap-4`; nested stacks use `gap-2`–`gap-3`. Panels pad at `p-4` (and `p-6` for empty/state callouts).
+Operator and developer shells use a persistent left sidebar on canvas with an inset main column. Main content stays on canvas; interactive content lives in elevated panels.
 
-Grids collapse to a single column on small viewports; common patterns are `md:grid-cols-3` for overview stats and `md:grid-cols-[minmax(0,1fr)_12rem]` for list/filter splits. Relume breakpoints in use: `sm` 480px, `md` 768px, `lg` 992px, `xl` 1280px. Sticky selection/action bars sit above the debugger FAB (`mb-20` / `md:mb-16`) and respect safe-area insets.
+Density is comfortable: ~40px control height, 16–24px section padding, soft 1px separators instead of heavy rules. Prefer one job per panel; avoid nested card stacks. Responsive shells collapse sidebar chrome on smaller viewports while keeping the same tonal language. Coarse-pointer devices may enlarge hit targets (~44px) without changing desktop density.
 
-**The Sheet Stack Rule.** Content is a vertical stack of bordered panels—not card carousels, hero bands, or dashboard widget chrome.
+Spacing rhythm: `xs` 0.5rem, `sm` 0.75rem, `md` 1rem, `lg` 1.5rem, `xl` 2rem.
 
 ## Elevation & Depth
 
-This system is flat by default. Depth is conveyed by **tonal layering** (Paper on Mist, Mist sticky bars over Paper content) and **border weight** (1px rules; 2px for debugger/toast frames), not ambient shadows. Product UI explicitly prefers `shadow-none` on floating chrome so the debugger and toasts read as wireframe sheets, not elevated material.
+Depth is tonal and structural, not decorative. Prefer shadow-as-border over hard black outlines. Surfaces are flat at rest; ambient shadow appears for menus and floating chrome.
 
-Relume’s shadow scale exists in the preset but is not part of the prototype’s visual language for product surfaces.
+### Shadow Vocabulary
+- **Border** (`box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08)`): Default elevated panel edge.
+- **Border small / medium / large**: Progressive ambient layers for slightly lifted cards (still grayscale, still quiet).
+- **Menu** (`0 0 0 1px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.02), 0 4px 8px -4px rgba(0, 0, 0, 0.04), 0 16px 24px -8px rgba(0, 0, 0, 0.06)`): Menus, sheets, and floating chrome.
+- **Focus** (`0 0 0 2px #ffffff, 0 0 0 4px #0072F5`): Double-ring focus pattern on interactive controls.
 
-**The Flat Sheet Rule.** No soft drop shadows on product panels, cards, sticky bars, or prototype chrome. If something must sit above the page, thicken the border and keep the fill Paper or Mist.
+Header separators may use a 1px border or a hairline shadow (`0 1px 0 0 rgba(0, 0, 0, 0.1)`).
+
+### Named Rules
+**The Soft Edge Rule.** Prefer `#EAEAEA` borders and shadow-as-border over hard black Relume frames.
+
+**The Flat-By-Default Rule.** Surfaces are flat at rest. Ambient shadow appears only for floating layers (menus, sheets) or focus—not as a default card glow.
 
 ## Shapes
 
-Corners are square (`rounded.none` / `0px`). Containers are rectangular panels with a continuous Ink rule. Icon wells are square (`size-12`) bordered boxes on Mist. Avoid pills, soft radii, and clipped media cards—the silhouette is the engineering sheet.
+Corner language is softly rounded, never square-ink wireframe and never pill-everything.
 
-**The Hard Edge Rule.** Do not round product panels, buttons, badges, or inputs for polish. Square geometry is the wireframe signal.
+- **6px (`sm`)**: Buttons, inputs, nav items—the default control radius.
+- **8px (`md`)**: Compact controls and intermediate chrome.
+- **12px (`lg`)**: Cards, elevated panels, sheets.
+- **16px (`xl`)**: Larger containers when needed.
+- **9999px (`full`)**: Pills, avatars, status dots only.
+
+### Named Rules
+**The Control Radius Rule.** Interactive controls default to 6px; content panels default to 12px. Do not mix square Relume geometry into new surfaces.
 
 ## Components
 
-Primitives come from Relume UI; product patterns compose bordered panels around those primitives. Icons: Boxicons only.
+Components feel refined and restrained: near-black primary actions, bordered white secondaries, soft nav fills, elevated panels.
 
 ### Buttons
-- **Shape:** Square corners (`0px`); 1px Ink border on primary/secondary.
-- **Primary:** Ink fill, Paper text, padding ~`px-6 py-3` (sm: `px-5 py-2`).
-- **Secondary:** Paper fill, Ink text, Ink border—default for most in-flow actions.
-- **Hover / Focus:** Relume focus ring offset; do not add glow or lift. Disabled at 50% opacity.
-- **Link / Ghost:** Text-style or ghost variants for low-emphasis actions; keep rare in product flows.
+- **Shape:** Gently curved (6px)
+- **Primary:** Near-black fill (`foreground`) with white label; padding `8px 12px`; height 40px; 1px matching border
+- **Secondary:** White fill, soft `#EAEAEA` border, foreground text; hover fills `#EBEBEB`
+- **Ghost:** Transparent with nav gray text; hover fills `#EBEBEB` and shifts text to foreground
+- **Hover / Focus:** Color transitions ~150ms ease; focus uses the double-ring blue pattern—never a purple glow
 
-### Chips / Badges
-- **Outline:** Ink border, Paper fill—default status/meta chip.
-- **Secondary:** Mist fill—muted or warning-adjacent labels.
-- **Success variant:** Soft green fill with success text when Relume `success` badge is appropriate.
-- **State:** Prefer outline/secondary over filled Ink badges so status does not compete with primary buttons.
+### Badges / Chips
+- **Style:** Recessed gray pill, or soft status tint (`success-soft` / `error-soft`) with matching status text
+- **Shape:** Full pill radius; padding `2px 8px`
+- **State:** Outline badges use border token, not hard ink rules
 
 ### Cards / Containers
-- **Corner Style:** Square.
-- **Background:** Paper for content panels; Mist for muted/empty/sticky regions.
-- **Shadow Strategy:** None (see Elevation).
-- **Border:** 1px Rule/Ink (`border-border-primary`).
-- **Internal Padding:** `16px` (`p-4`) standard; `24px` (`p-6`) for state panels.
+- **Corner Style:** 12px on elevated panels
+- **Background:** Elevated white, or recessed for muted wells
+- **Shadow Strategy:** Shadow-as-border by default; menu shadow for floating sheets
+- **Border:** Soft `#EAEAEA` when a true border is needed; prefer shadow-border
+- **Internal Padding:** 16px typical
 
 ### Inputs / Fields
-- **Style:** Full-width field, min-height ~44px (`min-h-11`), Ink border, Paper fill, system sans.
-- **Focus:** Outline/ring via Relume—no colored glow.
-- **Error / Disabled:** Error text/border tokens when validation fails; disabled opacity per Relume.
+- **Style:** Elevated white fill, soft border, 6px radius, 40px height, `8px 12px` padding
+- **Focus:** Double-ring (`focus` shadow) or accent-focus outline—never thick black Relume rings
+- **Error / Disabled:** Error border/text at control scale; muted text for disabled
 
 ### Navigation
-- Relume Sidebar with bold product name, Graphite “Prototype” subtitle, and Boxicon + label rows.
-- Active item uses filled Boxicon pack; inactive uses basic/outline.
-- Top inset header shows Graphite product label + semibold current page title (not an `h1` in chrome—page `h1` lives in content).
+- **Style:** Sidebar rows on canvas; label color `#4D4D4D`; 6px radius; padding `8px 10px`
+- **Hover:** `#EBEBEB` fill, foreground text
+- **Active:** `#EBEBEB` fill, foreground text, weight 500
+- **Icons:** Boxicons outline by default; filled only for the active item
 
-### Signature: Marketplace / Node Panel
-Bordered Paper article with square Mist icon well (`size-12`), bold title, Graphite meta, and Badge + Button row. Same grammar for node list rows and activity items.
-
-### Signature: State Panel
-Mist-filled bordered block (`p-6`) for empty, error, offline, and permission messaging—headline, explanation, and one clear next action.
+### Signature: Wallet sheet / debugger
+Same elevated language as panels—white surface, soft edge, mono for addresses. Debugger controls stay quiet chrome, not a second visual system.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** compose screens from bordered Paper/Mist panels with Ink rules and Relume primitives.
-- **Do** use Graphite for secondary text so meta copy stays readable on Paper.
-- **Do** reserve Success/Error colors for semantic status only.
-- **Do** keep product chrome flat (`shadow-none`) and square-cornered.
-- **Do** use Boxicons only; outline by default, filled for active navigation.
+- **Do** compose Operate screens from soft-bordered elevated panels on `#FAFAFA`.
+- **Do** use Geist with the three-weight rule (400/500/600) and tight display/title tracking (`-0.03em` to `-0.04em`).
+- **Do** keep primary actions near-black and secondary actions bordered white.
+- **Do** reserve blue for links, focus, and interactive emphasis.
+- **Do** use Boxicons; outline by default, filled for active navigation.
 
 ### Don't:
-- **Don't** introduce a second UI library, soft-UI card language, or decorative gradients.
-- **Don't** restore Relume’s default `#aaa` secondary text on white backgrounds.
-- **Don't** treat partial success, incompatibility, or offline queueing with vague color-only cues—pair status color with explicit copy.
-- **Don't** add ambient shadows, glassmorphism, or rounded-full pills to “polish” the wireframe.
-- **Don't** invent a production brand palette here; the binding constraint remains the Relume B&W wireframe until PRODUCT.md changes.
+- **Don't** restore Relume square ink-border wireframe as the default look.
+- **Don't** paint large purple/blue gradient surfaces or multi-layer colored glow shadows.
+- **Don't** use font-weight 700 for “more hierarchy.”
+- **Don't** turn status colors into full-width alert banners unless the product state truly requires interruption.
+- **Don't** use Geist Mono for UI chrome copy or marketing headlines.

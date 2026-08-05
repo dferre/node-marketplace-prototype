@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-08-05T16:57:18.042Z",
+        "reason": "User pinned Vercel DESIGN.md which specifies Geist"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-08-05T16:57:18.175Z",
+        "reason": "User pinned Vercel DESIGN.md which specifies Geist Mono"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "9999px",
+        "createdAt": "2026-08-05T16:57:18.308Z",
+        "reason": "User pinned Vercel system; pill/status dots use full radius"
+      }
+    ]
+  }
+}

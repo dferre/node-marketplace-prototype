@@ -39,6 +39,8 @@ import {
   buildScenarioUrl,
   pickStateSnapshot,
 } from "../../utils/scenarioUrl";
+import { WorkspaceSwitcher } from "../developer/WorkspaceSwitcher";
+import { DeveloperDebuggerControls } from "./DeveloperDebuggerControls";
 
 const TABS: { id: DebuggerTab; label: string }[] = [
   { id: "scenario", label: "Scenario" },
@@ -46,6 +48,7 @@ const TABS: { id: DebuggerTab; label: string }[] = [
   { id: "installation", label: "Installation" },
   { id: "system", label: "System" },
   { id: "onboarding", label: "Onboarding" },
+  { id: "developer", label: "Developer" },
   { id: "debug", label: "Debug" },
 ];
 
@@ -161,6 +164,14 @@ function DebuggerPanelBody() {
 
   return (
     <div className="flex flex-col gap-3">
+      <section className="flex flex-col gap-2 rounded-md border border-border-primary bg-background-primary p-3">
+        <h3 className="text-sm font-semibold text-text-primary">Workspace</h3>
+        <p className="text-sm text-text-secondary">
+          Switch between the node operator app and developer portal.
+        </p>
+        <WorkspaceSwitcher />
+      </section>
+
       <div className="flex flex-wrap gap-1" role="tablist" aria-label="Debugger sections">
         {TABS.map((tab) => (
           <Button
@@ -179,7 +190,7 @@ function DebuggerPanelBody() {
       </div>
 
       {activeTab === "scenario" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
+        <section className="flex flex-col gap-3 rounded-md border border-border-primary bg-background-primary p-3">
           <h3 className="text-sm font-semibold text-text-primary">Scenario</h3>
           <div className="flex flex-col gap-2">
             <Label htmlFor="scenario-select">Active scenario</Label>
@@ -218,7 +229,7 @@ function DebuggerPanelBody() {
 
       {activeTab === "data" ? (
         <div className="flex flex-col gap-3">
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
+          <section className="flex flex-col gap-2 rounded-md border border-border-primary bg-background-primary p-3">
             <h3 className="text-sm font-semibold text-text-primary">User</h3>
             <Label htmlFor="user-select">Active user</Label>
             <Select value={activeUserId} onValueChange={setActiveUserId}>
@@ -239,7 +250,7 @@ function DebuggerPanelBody() {
             </p>
           </section>
 
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
+          <section className="flex flex-col gap-2 rounded-md border border-border-primary bg-background-primary p-3">
             <h3 className="text-sm font-semibold text-text-primary">App</h3>
             <Label htmlFor="app-select">Active app</Label>
             <Select value={activeAppId} onValueChange={setActiveAppId}>
@@ -260,7 +271,7 @@ function DebuggerPanelBody() {
             </p>
           </section>
 
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
+          <section className="flex flex-col gap-2 rounded-md border border-border-primary bg-background-primary p-3">
             <h3 className="text-sm font-semibold text-text-primary">Node fleet</h3>
             <Label htmlFor="fleet-select">Active fleet</Label>
             <Select value={nodeFleetId} onValueChange={setNodeFleetId}>
@@ -287,7 +298,7 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "installation" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
+        <section className="flex flex-col gap-3 rounded-md border border-border-primary bg-background-primary p-3">
           <h3 className="text-sm font-semibold text-text-primary">Installation</h3>
 
           <div className="flex flex-col gap-2">
@@ -417,7 +428,7 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "system" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
+        <section className="flex flex-col gap-3 rounded-md border border-border-primary bg-background-primary p-3">
           <h3 className="text-sm font-semibold text-text-primary">
             System overrides
           </h3>
@@ -444,7 +455,7 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "onboarding" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
+        <section className="flex flex-col gap-3 rounded-md border border-border-primary bg-background-primary p-3">
           <h3 className="text-sm font-semibold text-text-primary">
             Onboarding jumps
           </h3>
@@ -540,8 +551,10 @@ function DebuggerPanelBody() {
         </section>
       ) : null}
 
+      {activeTab === "developer" ? <DeveloperDebuggerControls /> : null}
+
       {activeTab === "debug" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
+        <section className="flex flex-col gap-3 rounded-md border border-border-primary bg-background-primary p-3">
           <h3 className="text-sm font-semibold text-text-primary">Debug data</h3>
           <div className="grid grid-cols-2 gap-2 text-sm text-text-primary">
             <p>Scenario: {summary.scenarioId}</p>
@@ -602,7 +615,7 @@ export function PrototypeDebugger() {
               type="button"
               variant="secondary"
               size="sm"
-              className="touch-target border-2 border-border-primary bg-background-secondary shadow-none"
+              className="touch-target rounded-sm border border-border-primary bg-background-primary shadow-menu"
               onClick={() => setDebuggerOpen(true)}
               aria-expanded={isOpen}
               aria-controls="prototype-debugger-panel"
@@ -614,13 +627,13 @@ export function PrototypeDebugger() {
           ) : null}
           <SheetContent
             side="bottom"
-            className="z-[100] max-h-[85vh] border-t-2 border-border-primary bg-background-secondary"
+            className="z-[100] max-h-[85vh] rounded-t-lg border-t border-border-primary bg-background-primary"
             overlayClassName="z-[90]"
           >
             <SheetHeader>
               <SheetTitle>Prototype Debugger</SheetTitle>
               <SheetDescription>
-                Swap scenarios and fixture state without leaving the wireframe.
+                Swap scenarios and fixture state without leaving the canvas.
               </SheetDescription>
             </SheetHeader>
             <div id="prototype-debugger-panel" className="mt-4 overflow-y-auto pb-8">
@@ -637,14 +650,14 @@ export function PrototypeDebugger() {
       {isOpen ? (
         <aside
           id="prototype-debugger-panel"
-          className="flex max-h-[75vh] w-[24rem] flex-col border-2 border-border-primary bg-background-secondary shadow-none"
+          className="flex max-h-[75vh] w-[24rem] flex-col overflow-hidden rounded-lg border border-border-primary bg-background-primary shadow-menu"
           role="dialog"
           aria-label="Prototype debugger"
         >
           <div className="flex items-center justify-between border-b border-border-primary px-3 py-2">
             <div className="flex items-center gap-2">
               <BugIcon pack="basic" size="sm" aria-hidden="true" />
-              <p className="text-sm font-semibold text-text-primary">
+              <p className="text-sm font-semibold tracking-tight text-text-primary">
                 Prototype Debugger
               </p>
             </div>
@@ -668,7 +681,7 @@ export function PrototypeDebugger() {
         type="button"
         variant="secondary"
         size="sm"
-        className="touch-target border-2 border-border-primary bg-background-secondary shadow-none"
+        className="touch-target rounded-sm border border-border-primary bg-background-primary shadow-menu"
         onClick={toggleDebugger}
         aria-expanded={isOpen}
         aria-controls="prototype-debugger-panel"

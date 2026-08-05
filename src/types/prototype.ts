@@ -1,3 +1,5 @@
+import type { DeveloperPortalState } from "./developer";
+
 export type InstallationScope = "one" | "selected" | "all-compatible";
 
 export type OverallInstallationStatus =
@@ -35,7 +37,8 @@ export type DebuggerTab =
   | "installation"
   | "system"
   | "debug"
-  | "onboarding";
+  | "onboarding"
+  | "developer";
 
 export type OnboardingFlowId =
   | "account"
@@ -305,6 +308,8 @@ export type PrototypeState = {
   debugger: DebuggerState;
   toast: ToastState;
   onboarding: OnboardingState;
+  developerPortal: DeveloperPortalState;
+  developerScenarioId: string;
 };
 
 export const defaultOnboardingState = (): OnboardingState => ({

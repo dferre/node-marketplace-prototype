@@ -74,6 +74,61 @@ export function usePageChrome(
 }
 
 export function getDefaultPageChrome(pathname: string): PageChromeConfig {
+  if (pathname.startsWith("/developer/apps/") && pathname !== "/developer/apps/new") {
+    const appId = pathname.split("/")[3];
+    const appBase = `/developer/apps/${appId}`;
+    if (pathname === appBase) {
+      return {
+        backTo: "/developer/apps",
+        backLabel: "My Apps",
+        actions: [
+          {
+            id: "edit",
+            label: "Edit listing",
+            to: `${appBase}/edit`,
+            variant: "primary",
+          },
+          {
+            id: "preview",
+            label: "Preview",
+            to: `${appBase}/preview`,
+            variant: "secondary",
+          },
+        ],
+      };
+    }
+    return {
+      backTo: appBase,
+      backLabel: "App dashboard",
+    };
+  }
+
+  if (pathname === "/developer/apps/new") {
+    return {
+      backTo: "/developer/apps",
+      backLabel: "My Apps",
+    };
+  }
+
+  if (pathname.startsWith("/developer")) {
+    return {
+      actions: [
+        {
+          id: "create",
+          label: "Create app",
+          to: "/developer/apps/new",
+          variant: "primary",
+        },
+        {
+          id: "apps",
+          label: "My Apps",
+          to: "/developer/apps",
+          variant: "secondary",
+        },
+      ],
+    };
+  }
+
   if (pathname.startsWith("/onboarding/developer")) {
     return {
       backTo: "/onboarding",

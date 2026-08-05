@@ -1,169 +1,187 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-04T19:40:06Z",
+  "generatedAt": "2026-08-05T17:00:00Z",
   "title": "Design System: Node Marketplace",
   "extensions": {
     "colorMeta": {
-      "ink": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#FAFAFA",
+        "tonalRamp": ["#0A0A0A", "#171717", "#4D4D4D", "#666666", "#8F8F8F", "#EAEAEA", "#F2F2F2", "#FAFAFA"]
+      },
+      "elevated": {
+        "role": "neutral",
+        "displayName": "Elevated",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#EAEAEA", "#EBEBEB", "#F2F2F2", "#FAFAFA", "#FCFCFC", "#FEFEFE", "#FFFFFF", "#FFFFFF"]
+      },
+      "recessed": {
+        "role": "neutral",
+        "displayName": "Recessed",
+        "canonical": "#F2F2F2",
+        "tonalRamp": ["#8F8F8F", "#D4D4D4", "#EAEAEA", "#EBEBEB", "#F2F2F2", "#F5F5F5", "#FAFAFA", "#FFFFFF"]
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Hover",
+        "canonical": "#EBEBEB",
+        "tonalRamp": ["#8F8F8F", "#D4D4D4", "#EAEAEA", "#EBEBEB", "#F2F2F2", "#F5F5F5", "#FAFAFA", "#FFFFFF"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "#EAEAEA",
+        "tonalRamp": ["#171717", "#4D4D4D", "#8F8F8F", "#D4D4D4", "#EAEAEA", "#EBEBEB", "#F2F2F2", "#FAFAFA"]
+      },
+      "border-strong": {
+        "role": "neutral",
+        "displayName": "Border Strong",
+        "canonical": "#D4D4D4",
+        "tonalRamp": ["#171717", "#4D4D4D", "#8F8F8F", "#D4D4D4", "#EAEAEA", "#EBEBEB", "#F2F2F2", "#FAFAFA"]
+      },
+      "foreground": {
         "role": "primary",
-        "displayName": "Ink",
-        "canonical": "#000000",
-        "tonalRamp": [
-          "#0a0a0a",
-          "#1f1f1f",
-          "#3d3d3d",
-          "#5c5c5c",
-          "#7a7a7a",
-          "#a3a3a3",
-          "#d4d4d4",
-          "#f5f5f5"
-        ]
+        "displayName": "Foreground",
+        "canonical": "#171717",
+        "tonalRamp": ["#0A0A0A", "#171717", "#4D4D4D", "#666666", "#8F8F8F", "#D4D4D4", "#EAEAEA", "#FAFAFA"]
       },
-      "paper": {
+      "secondary": {
         "role": "neutral",
-        "displayName": "Paper",
-        "canonical": "#ffffff",
-        "tonalRamp": [
-          "#e8e8e8",
-          "#eeeeee",
-          "#f2f2f2",
-          "#f5f5f5",
-          "#fafafa",
-          "#fcfcfc",
-          "#fefefe",
-          "#ffffff"
-        ]
+        "displayName": "Secondary",
+        "canonical": "#666666",
+        "tonalRamp": ["#171717", "#4D4D4D", "#666666", "#8F8F8F", "#A3A3A3", "#D4D4D4", "#EAEAEA", "#FAFAFA"]
       },
-      "mist": {
+      "muted": {
         "role": "neutral",
-        "displayName": "Mist",
-        "canonical": "#eeeeee",
-        "tonalRamp": [
-          "#9a9a9a",
-          "#b0b0b0",
-          "#c4c4c4",
-          "#d6d6d6",
-          "#e2e2e2",
-          "#eeeeee",
-          "#f4f4f4",
-          "#fafafa"
-        ]
+        "displayName": "Muted",
+        "canonical": "#8F8F8F",
+        "tonalRamp": ["#171717", "#4D4D4D", "#666666", "#8F8F8F", "#A3A3A3", "#D4D4D4", "#EAEAEA", "#FAFAFA"]
       },
-      "graphite": {
+      "nav": {
         "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "#4b5563",
-        "tonalRamp": [
-          "#111827",
-          "#1f2937",
-          "#374151",
-          "#4b5563",
-          "#6b7280",
-          "#9ca3af",
-          "#d1d5db",
-          "#f3f4f6"
-        ]
+        "displayName": "Nav",
+        "canonical": "#4D4D4D",
+        "tonalRamp": ["#171717", "#4D4D4D", "#666666", "#8F8F8F", "#A3A3A3", "#D4D4D4", "#EAEAEA", "#FAFAFA"]
       },
-      "rule": {
-        "role": "neutral",
-        "displayName": "Rule",
-        "canonical": "#000000",
-        "tonalRamp": [
-          "#0a0a0a",
-          "#1f1f1f",
-          "#3d3d3d",
-          "#5c5c5c",
-          "#7a7a7a",
-          "#a3a3a3",
-          "#d4d4d4",
-          "#f5f5f5"
-        ]
+      "accent": {
+        "role": "primary",
+        "displayName": "Operate Blue",
+        "canonical": "#0072F5",
+        "tonalRamp": ["#003D85", "#005FCC", "#0072F5", "#2B8CFF", "#52AEFF", "#99CFFF", "#D6EBFF", "#EFF6FF"]
+      },
+      "accent-focus": {
+        "role": "primary",
+        "displayName": "Accent Focus",
+        "canonical": "#005FCC",
+        "tonalRamp": ["#003D85", "#005FCC", "#0072F5", "#2B8CFF", "#52AEFF", "#99CFFF", "#D6EBFF", "#EFF6FF"]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Accent Soft",
+        "canonical": "rgba(0, 114, 245, 0.16)",
+        "tonalRamp": ["#003D85", "#005FCC", "#0072F5", "#2B8CFF", "#52AEFF", "#99CFFF", "#D6EBFF", "#EFF6FF"]
       },
       "success": {
         "role": "secondary",
         "displayName": "Success",
-        "canonical": "#027a48",
-        "tonalRamp": [
-          "#01462a",
-          "#015c37",
-          "#027a48",
-          "#039855",
-          "#12b76a",
-          "#6ce9a6",
-          "#a6f4c5",
-          "#ecfdf3"
-        ]
+        "canonical": "#398E4A",
+        "tonalRamp": ["#1F5C2E", "#398E4A", "#45A557", "#6CDA75", "#A6F4C5", "#D1FADF", "#ECFDF3", "#F6FEF9"]
+      },
+      "success-dot": {
+        "role": "secondary",
+        "displayName": "Success Dot",
+        "canonical": "#45A557",
+        "tonalRamp": ["#1F5C2E", "#398E4A", "#45A557", "#6CDA75", "#A6F4C5", "#D1FADF", "#ECFDF3", "#F6FEF9"]
       },
       "success-soft": {
         "role": "secondary",
         "displayName": "Success Soft",
-        "canonical": "#ecfdf3",
-        "tonalRamp": [
-          "#027a48",
-          "#039855",
-          "#12b76a",
-          "#6ce9a6",
-          "#a6f4c5",
-          "#d1fadf",
-          "#ecfdf3",
-          "#f6fef9"
-        ]
+        "canonical": "#ECFDF3",
+        "tonalRamp": ["#398E4A", "#45A557", "#6CDA75", "#A6F4C5", "#D1FADF", "#ECFDF3", "#F6FEF9", "#FFFFFF"]
+      },
+      "warning": {
+        "role": "secondary",
+        "displayName": "Warning",
+        "canonical": "#FF990A",
+        "tonalRamp": ["#9A5800", "#C77700", "#FF990A", "#FFB84D", "#FFD699", "#FFE8C2", "#FFF4E0", "#FFFAF2"]
       },
       "error": {
         "role": "secondary",
         "displayName": "Error",
-        "canonical": "#b42318",
-        "tonalRamp": [
-          "#7a271a",
-          "#912018",
-          "#b42318",
-          "#d92d20",
-          "#f04438",
-          "#fda29b",
-          "#fecdca",
-          "#fef3f2"
-        ]
+        "canonical": "#E5484D",
+        "tonalRamp": ["#8F1D22", "#B42318", "#E5484D", "#F04438", "#FDA29B", "#FECDCA", "#FEF3F2", "#FFFBFA"]
       },
       "error-soft": {
         "role": "secondary",
         "displayName": "Error Soft",
-        "canonical": "#fef3f2",
-        "tonalRamp": [
-          "#b42318",
-          "#d92d20",
-          "#f04438",
-          "#fda29b",
-          "#fecdca",
-          "#fee4e2",
-          "#fef3f2",
-          "#fffbfa"
-        ]
+        "canonical": "#FEF3F2",
+        "tonalRamp": ["#E5484D", "#F04438", "#FDA29B", "#FECDCA", "#FEE4E2", "#FEF3F2", "#FFFBFA", "#FFFFFF"]
       }
     },
     "typographyMeta": {
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Page titles: text-2xl on small screens, text-3xl from md up."
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level titles with Geist 600 and tight tracking (-0.04em)."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Stat callouts and dense section emphasis at text-2xl bold."
+        "purpose": "Section titles and panel headings with Geist 600 and -0.03em tracking."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Primary reading and control labels at text-base."
+        "purpose": "Primary reading text and long-form copy."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Meta, helpers, and secondary chrome at text-sm Graphite."
+        "purpose": "Form labels, nav, buttons, and chrome meta at 0.875rem."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Dense helpers and timestamps."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Addresses, hashes, IDs, and code-like data only."
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "border",
+        "value": "0 0 0 1px rgba(0, 0, 0, 0.08)",
+        "purpose": "Default elevated panel edge (shadow-as-border)."
+      },
+      {
+        "name": "border-small",
+        "value": "0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.04)",
+        "purpose": "Slightly lifted compact surfaces."
+      },
+      {
+        "name": "border-medium",
+        "value": "0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 8px -8px rgba(0, 0, 0, 0.04)",
+        "purpose": "Mid elevation for cards that need a quiet lift."
+      },
+      {
+        "name": "border-large",
+        "value": "0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 16px -4px rgba(0, 0, 0, 0.04)",
+        "purpose": "Larger quiet lift for prominent panels."
+      },
+      {
+        "name": "menu",
+        "value": "0 0 0 1px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.02), 0 4px 8px -4px rgba(0, 0, 0, 0.04), 0 16px 24px -8px rgba(0, 0, 0, 0.06)",
+        "purpose": "Menus, sheets, and floating chrome."
+      },
+      {
+        "name": "focus",
+        "value": "0 0 0 2px #ffffff, 0 0 0 4px #0072F5",
+        "purpose": "Vercel double-ring focus pattern."
+      }
+    ],
     "motion": [
       {
-        "name": "accordion",
-        "value": "0.2s ease-out",
-        "purpose": "Relume accordion open/close only; product UI does not add decorative motion."
+        "name": "color-transition",
+        "value": "150ms ease",
+        "purpose": "Hover/focus color and border transitions only—no bounce."
       }
     ],
     "breakpoints": [
@@ -179,130 +197,127 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Ink-filled Relume primary action with hard border.",
+      "description": "Near-black primary action with soft 6px radius.",
       "html": "<button class=\"ds-btn-primary\" type=\"button\">Install</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #000000; color: #ffffff; padding: 12px 24px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; transition: opacity 0.15s ease; } .ds-btn-primary:hover { opacity: 0.92; } .ds-btn-primary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-btn-primary:active { opacity: 0.85; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #171717; background: #171717; color: #ffffff; padding: 8px 12px; min-height: 40px; font: 400 0.875rem/1 Geist, ui-sans-serif, system-ui, sans-serif; border-radius: 6px; cursor: pointer; transition: background 150ms ease, border-color 150ms ease; } .ds-btn-primary:hover { background: #0a0a0a; border-color: #0a0a0a; } .ds-btn-primary:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0072F5; outline: none; } .ds-btn-primary:active { background: #171717; }"
     },
     {
       "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Paper-filled bordered button used for most in-flow actions.",
+      "description": "White elevated control with soft border.",
       "html": "<button class=\"ds-btn-secondary\" type=\"button\">View details</button>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 12px 24px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; transition: background 0.15s ease; } .ds-btn-secondary:hover { background: #eeeeee; } .ds-btn-secondary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-btn-secondary:active { background: #e5e5e5; }"
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #EAEAEA; background: #ffffff; color: #171717; padding: 8px 12px; min-height: 40px; font: 400 0.875rem/1 Geist, ui-sans-serif, system-ui, sans-serif; border-radius: 6px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); transition: background 150ms ease; } .ds-btn-secondary:hover { background: #EBEBEB; } .ds-btn-secondary:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0072F5; outline: none; }"
     },
     {
-      "name": "Secondary Button Sm",
+      "name": "Ghost Button",
       "kind": "button",
-      "refersTo": "button-secondary-sm",
-      "description": "Compact secondary control for list rows and chrome.",
-      "html": "<button class=\"ds-btn-secondary-sm\" type=\"button\">Manage</button>",
-      "css": ".ds-btn-secondary-sm { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 20px; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; } .ds-btn-secondary-sm:hover { background: #eeeeee; } .ds-btn-secondary-sm:focus-visible { outline: 2px solid #000000; outline-offset: 2px; }"
+      "refersTo": "button-ghost",
+      "description": "Transparent chrome control with soft hover fill.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">Cancel</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; background: transparent; color: #4D4D4D; padding: 8px 12px; min-height: 40px; font: 400 0.875rem/1 Geist, ui-sans-serif, system-ui, sans-serif; border-radius: 6px; cursor: pointer; transition: background 150ms ease, color 150ms ease; } .ds-btn-ghost:hover { background: #EBEBEB; color: #171717; } .ds-btn-ghost:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0072F5; outline: none; }"
     },
     {
-      "name": "Outline Badge",
+      "name": "Badge",
       "kind": "chip",
-      "refersTo": "badge-outline",
-      "description": "Default meta/status chip with Ink rule.",
-      "html": "<span class=\"ds-badge-outline\">Compatible</span>",
-      "css": ".ds-badge-outline { display: inline-flex; align-items: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 2px 8px; font: 400 0.75rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; }"
-    },
-    {
-      "name": "Muted Badge",
-      "kind": "chip",
-      "refersTo": "badge-secondary",
-      "description": "Mist-filled badge for muted or warning-adjacent labels.",
-      "html": "<span class=\"ds-badge-secondary\">Queued</span>",
-      "css": ".ds-badge-secondary { display: inline-flex; align-items: center; border: 1px solid transparent; background: #eeeeee; color: #000000; padding: 2px 8px; font: 400 0.75rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; }"
-    },
-    {
-      "name": "Text Input",
-      "kind": "input",
-      "refersTo": "input",
-      "description": "Square Relume field with Ink border and Paper fill.",
-      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"Search apps\" />",
-      "css": ".ds-input { display: block; width: 100%; min-height: 44px; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 12px; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; } .ds-input::placeholder { color: #666666; } .ds-input:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+      "refersTo": "badge",
+      "description": "Compact recessed pill for status and meta.",
+      "html": "<span class=\"ds-badge\">Compatible</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 6px; background: #F2F2F2; color: #171717; padding: 2px 8px; border-radius: 9999px; font: 400 0.75rem/1.33 Geist, ui-sans-serif, system-ui, sans-serif; } .ds-badge::before { content: \"\"; width: 8px; height: 8px; border-radius: 9999px; background: #45A557; }"
     },
     {
       "name": "Content Panel",
       "kind": "card",
       "refersTo": "panel",
-      "description": "Signature bordered Paper panel used for apps, nodes, and sections.",
-      "html": "<article class=\"ds-panel\"><div class=\"ds-panel-icon\" aria-hidden=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\"/></svg></div><div><h3 class=\"ds-panel-title\">Atlas Storage</h3><p class=\"ds-panel-meta\">Storage · 3 compatible nodes</p></div></article>",
-      "css": ".ds-panel { display: flex; gap: 12px; align-items: flex-start; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 16px; border-radius: 0; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-panel-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0; border: 1px solid #000000; background: #eeeeee; } .ds-panel-title { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.4; } .ds-panel-meta { margin: 4px 0 0; font-size: 0.875rem; color: #4b5563; }"
+      "description": "Elevated white panel with shadow-as-border.",
+      "html": "<article class=\"ds-panel\"><h3>Atlas Storage</h3><p>Storage · 3 compatible nodes</p></article>",
+      "css": ".ds-panel { background: #ffffff; color: #171717; padding: 16px; border-radius: 12px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); font: 400 1rem/1.5 Geist, ui-sans-serif, system-ui, sans-serif; } .ds-panel h3 { margin: 0; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.3; } .ds-panel p { margin: 4px 0 0; font-size: 0.875rem; color: #666666; }"
     },
     {
-      "name": "State Panel",
-      "kind": "custom",
+      "name": "Muted Panel",
+      "kind": "card",
       "refersTo": "panel-muted",
-      "description": "Mist empty/error/offline callout with clear next action.",
-      "html": "<div class=\"ds-state-panel\"><h2 class=\"ds-state-title\">No installed apps</h2><p class=\"ds-state-body\">Install an app from the marketplace to manage it here.</p><button class=\"ds-btn-secondary\" type=\"button\">Browse marketplace</button></div>",
-      "css": ".ds-state-panel { border: 1px solid #000000; background: #eeeeee; color: #000000; padding: 24px; border-radius: 0; font: 400 1rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-state-title { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.4; } .ds-state-body { margin: 8px 0 16px; font-size: 0.875rem; color: #4b5563; } .ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #000000; background: #ffffff; color: #000000; padding: 8px 20px; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; border-radius: 0; cursor: pointer; } .ds-btn-secondary:hover { background: #f5f5f5; } .ds-btn-secondary:focus-visible { outline: 2px solid #000000; outline-offset: 2px; }"
+      "description": "Recessed well for secondary groupings.",
+      "html": "<section class=\"ds-panel-muted\"><p>Draft changes not yet submitted.</p></section>",
+      "css": ".ds-panel-muted { background: #F2F2F2; color: #171717; padding: 16px; border-radius: 12px; font: 400 0.875rem/1.43 Geist, ui-sans-serif, system-ui, sans-serif; } .ds-panel-muted p { margin: 0; color: #666666; }"
     },
     {
-      "name": "Sidebar Nav Item",
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Elevated field with soft border and double-ring focus.",
+      "html": "<label class=\"ds-field\"><span>App name</span><input class=\"ds-input\" type=\"text\" placeholder=\"Atlas Storage\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font: 400 0.875rem/1.43 Geist, ui-sans-serif, system-ui, sans-serif; color: #171717; } .ds-input { height: 40px; padding: 8px 12px; border: 1px solid #EAEAEA; border-radius: 6px; background: #ffffff; color: #171717; font: 400 0.875rem/1.43 Geist, ui-sans-serif, system-ui, sans-serif; } .ds-input::placeholder { color: #8F8F8F; } .ds-input:hover { border-color: #D4D4D4; } .ds-input:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0072F5; border-color: #0072F5; }"
+    },
+    {
+      "name": "Nav Item",
       "kind": "nav",
-      "refersTo": "button-secondary",
-      "description": "Sidebar row with Boxicon-style mark; filled when active.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-item\" href=\"#\"><svg class=\"ds-nav-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M4 10l8-6 8 6v10H4V10z\"/></svg><span>Marketplace</span></a><a class=\"ds-nav-item is-active\" href=\"#\" aria-current=\"page\"><svg class=\"ds-nav-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M4 10l8-6 8 6v10H4V10z\"/></svg><span>Installed Apps</span></a></nav>",
-      "css": ".ds-nav { display: flex; flex-direction: column; gap: 4px; width: 220px; padding: 8px; border: 1px solid #000000; background: #ffffff; font: 400 0.875rem/1.5 ui-sans-serif, system-ui, sans-serif; } .ds-nav-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: #000000; text-decoration: none; border-radius: 0; } .ds-nav-item:hover { background: #eeeeee; } .ds-nav-item:focus-visible { outline: 2px solid #000000; outline-offset: 2px; } .ds-nav-item.is-active { background: #eeeeee; font-weight: 600; } .ds-nav-icon { flex-shrink: 0; }"
+      "refersTo": "nav-item",
+      "description": "Sidebar row with soft hover and active fill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item\" href=\"#\">Overview</a><a class=\"ds-nav-item is-active\" href=\"#\">Marketplace</a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 2px; } .ds-nav-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: #4D4D4D; text-decoration: none; border-radius: 6px; font: 400 0.875rem/1.43 Geist, ui-sans-serif, system-ui, sans-serif; transition: background 150ms ease, color 150ms ease; } .ds-nav-item:hover { background: #EBEBEB; color: #171717; } .ds-nav-item.is-active { background: #EBEBEB; color: #171717; font-weight: 500; } .ds-nav-item:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0072F5; }"
     }
   ],
   "narrative": {
-    "northStar": "The Blueprint Desk",
-    "overview": "This prototype’s visual system is a Relume black-and-white wireframe: crisp ink on paper, hard rules, and gray secondary notes. Structure and state readability outrank decoration. Surfaces read like engineering sheets pinned side by side—panels are bordered, flat, and informationally dense without ornamental chrome.\n\nPersonality is operator-facing and austere. Hierarchy comes from type weight, border weight, and Paper vs Mist fills—not color theater, glass, or soft elevation. Status greens and reds appear only when the product must communicate success, failure, or eligibility. Boxicons (outline by default, filled for active nav) are the only icon language.\n\nConfirmed rejection: high-fidelity crypto polish, purple/glow dashboards, soft UI cards with multi-layer shadows, and any parallel component library beside Relume UI.",
+    "northStar": "Quiet Deploy",
+    "overview": "The Node Marketplace prototype speaks Vercel’s Operate language: an achromatic canvas where hierarchy comes from weight, spacing, and soft edges—not ornament. Geist carries every UI string; Geist Mono is reserved for addresses, hashes, and code-like data. Blue is the only interactive accent. Status greens, ambers, and reds appear as compact indicators or soft-tinted badges, never as decorative fills.\n\nPersonality is developer-tool quiet confidence. Screens should feel engineered and scannable—sidebar nav with soft hover fills, elevated white panels edged by shadow-as-border, primary actions in near-black. Density is comfortable (~40px controls) rather than sparse marketing whitespace or cramped wireframe tables.\n\nConfirmed rejection: Relume hard-black square wireframe as the identity, purple/glow crypto dashboards, multi-layer colored soft-UI shadows, and decorative gradients.",
     "keyCharacteristics": [
-      "Flat Paper/Mist panels framed by hard Ink rules",
-      "System sans typography with bold page titles and compact body/meta",
-      "Relume Button/Badge/Input/Table/Dialog/Sheet/Sidebar primitives",
-      "Status color reserved for success/error semantics only",
-      "Coarse-pointer touch targets (~44px) without changing desktop density"
+      "Achromatic #FAFAFA canvas with elevated white panels",
+      "Geist 400/500/600 only; Geist Mono for data",
+      "Shadow-as-border elevation and double-ring blue focus",
+      "Soft 6–12px radii; pill radius for badges and status dots",
+      "Boxicons outline by default; filled only for active nav"
     ],
     "rules": [
       {
-        "name": "The Ink Economy Rule",
-        "body": "Color that is not Ink, Paper, Mist, or Graphite appears only for success/error semantics—never as decorative accent bands or marketing gradients.",
+        "name": "The Blue Economy Rule",
+        "body": "Blue is for links, focus, and interactive emphasis—never large decorative fills. Audit: if blue occupies more than a thin control or text run, remove it.",
         "section": "colors"
       },
       {
-        "name": "The Graphite Legibility Rule",
-        "body": "Secondary text uses Graphite (#4b5563), not Relume’s default #aaa, so meta copy stays AA-capable on Paper.",
+        "name": "The Indicator Scale Rule",
+        "body": "Status color stays at ~10px dots or compact badges; soft tints (success-soft, error-soft) wrap only small status chips, not full-width banners unless the product state truly requires interruption.",
         "section": "colors"
       },
       {
-        "name": "The One Family Rule",
-        "body": "Do not introduce display serifs, mono stacks, or marketing typefaces while the Relume wireframe commitment holds.",
+        "name": "The Three-Weight Rule",
+        "body": "Use 400, 500, and 600 only. Do not introduce 700 for hierarchy—size and spacing carry emphasis.",
         "section": "typography"
       },
       {
-        "name": "The Sheet Stack Rule",
-        "body": "Content is a vertical stack of bordered panels—not card carousels, hero bands, or dashboard widget chrome.",
-        "section": "layout"
+        "name": "The Mono Reservation Rule",
+        "body": "Geist Mono is for machine-readable strings only, never for marketing headlines or body prose.",
+        "section": "typography"
       },
       {
-        "name": "The Flat Sheet Rule",
-        "body": "No soft drop shadows on product panels, cards, sticky bars, or prototype chrome. If something must sit above the page, thicken the border and keep the fill Paper or Mist.",
+        "name": "The Soft Edge Rule",
+        "body": "Prefer #EAEAEA borders and shadow-as-border over hard black Relume frames.",
         "section": "elevation"
       },
       {
-        "name": "The Hard Edge Rule",
-        "body": "Do not round product panels, buttons, badges, or inputs for polish. Square geometry is the wireframe signal.",
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Ambient shadow appears only for floating layers (menus, sheets) or focus—not as a default card glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Control Radius Rule",
+        "body": "Interactive controls default to 6px; content panels default to 12px. Do not mix square Relume geometry into new surfaces.",
         "section": "shapes"
       }
     ],
     "dos": [
-      "Do compose screens from bordered Paper/Mist panels with Ink rules and Relume primitives.",
-      "Do use Graphite for secondary text so meta copy stays readable on Paper.",
-      "Do reserve Success/Error colors for semantic status only.",
-      "Do keep product chrome flat (shadow-none) and square-cornered.",
-      "Do use Boxicons only; outline by default, filled for active navigation."
+      "Do compose Operate screens from soft-bordered elevated panels on #FAFAFA.",
+      "Do use Geist with the three-weight rule (400/500/600) and tight display/title tracking (-0.03em to -0.04em).",
+      "Do keep primary actions near-black and secondary actions bordered white.",
+      "Do reserve blue for links, focus, and interactive emphasis.",
+      "Do use Boxicons; outline by default, filled for active navigation."
     ],
     "donts": [
-      "Don't introduce a second UI library, soft-UI card language, or decorative gradients.",
-      "Don't restore Relume’s default #aaa secondary text on white backgrounds.",
-      "Don't treat partial success, incompatibility, or offline queueing with vague color-only cues—pair status color with explicit copy.",
-      "Don't add ambient shadows, glassmorphism, or rounded-full pills to “polish” the wireframe.",
-      "Don't invent a production brand palette here; the binding constraint remains the Relume B&W wireframe until PRODUCT.md changes."
+      "Don't restore Relume square ink-border wireframe as the default look.",
+      "Don't paint large purple/blue gradient surfaces or multi-layer colored glow shadows.",
+      "Don't use font-weight 700 for “more hierarchy.”",
+      "Don't turn status colors into full-width alert banners unless the product state truly requires interruption.",
+      "Don't use Geist Mono for UI chrome copy or marketing headlines."
     ]
   }
 }

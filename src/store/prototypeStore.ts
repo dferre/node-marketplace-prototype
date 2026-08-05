@@ -1,5 +1,11 @@
 import { create } from "zustand";
 import { apps as catalogApps } from "../data/apps";
+import { createEmptyDraftApp } from "../data/developerApps";
+import {
+  buildDeveloperPortalFromScenario,
+  getDeveloperScenarioById,
+} from "../data/developerScenarios";
+import { createDefaultDeveloperPortalState } from "../data/developers";
 import { cloneFleetNodes } from "../data/nodes";
 import {
   getDefaultScenario,
@@ -8,6 +14,12 @@ import {
   scenarios,
 } from "../data/scenarios";
 import { users as catalogUsers } from "../data/users";
+import type {
+  DeveloperApp,
+  DeveloperOverrides,
+  EditorStepId,
+  ReviewFindingStatus,
+} from "../types/developer";
 import type {
   DebuggerTab,
   InstallationScope,
@@ -20,6 +32,14 @@ import type {
   PrototypeState,
 } from "../types/prototype";
 import { defaultOnboardingState } from "../types/prototype";
+import {
+  applyFindingStatus,
+  buildApprovedApp,
+  buildPublishedApp,
+  buildResubmittedApp,
+  markStepComplete,
+  patchDeveloperApp,
+} from "./developerActions";
 import {
   advanceInstallationStatuses,
   applyRunningInstallations,
@@ -90,6 +110,8 @@ function applyScenarioToState(
       : { isOpen: false, activeTab: "scenario" },
     toast: null,
     onboarding: defaultOnboardingState(),
+    developerPortal: createDefaultDeveloperPortalState(),
+    developerScenarioId: "dev-changes-requested",
   };
 }
 
@@ -117,6 +139,25 @@ type PrototypeActions = {
   dismissOnboardingTip: (tipId: OnboardingTipId) => void;
   restoreOnboardingTip: (tipId: OnboardingTipId) => void;
   resetOnboarding: () => void;
+  loadDeveloperScenario: (scenarioId: string) => string | null;
+  setActiveDeveloperId: (developerId: string) => void;
+  setActiveDeveloperAppId: (appId: string | null) => void;
+  setDeveloperOverride: <K extends keyof DeveloperOverrides>(
+    key: K,
+    value: DeveloperOverrides[K],
+  ) => void;
+  createDeveloperApp: () => string;
+  updateDeveloperApp: (appId: string, patch: Partial<DeveloperApp>) => void;
+  markDeveloperStepComplete: (appId: string, step: EditorStepId) => void;
+  setReviewFindingStatus: (
+    appId: string,
+    findingId: string,
+    status: ReviewFindingStatus,
+    developerResponse?: string,
+  ) => void;
+  resubmitDeveloperApp: (appId: string) => void;
+  approveDeveloperApp: (appId: string) => void;
+  publishDeveloperApp: (appId: string) => void;
   setActiveUserId: (userId: string) => void;
   setActiveAppId: (appId: string) => void;
   setNodeFleetId: (fleetId: string) => void;
@@ -206,8 +247,10 @@ export const usePrototypeStore = create<PrototypeStore>((set, get) => ({
 
     set({
       ...next,
-      // Onboarding progress is session UX — keep it across scenario swaps.
+      // Onboarding + developer portal are session UX — keep across operator scenario swaps.
       onboarding: current.onboarding,
+      developerPortal: current.developerPortal,
+      developerScenarioId: current.developerScenarioId,
       debugger: {
         ...next.debugger,
         isOpen: current.debugger.isOpen,
@@ -219,6 +262,144 @@ export const usePrototypeStore = create<PrototypeStore>((set, get) => ({
     });
 
     return scenario.startingRoute;
+  },
+
+  loadDeveloperScenario: (scenarioId) => {
+    const scenario = getDeveloperScenarioById(scenarioId);
+    if (!scenario) return null;
+    set({
+      developerScenarioId: scenario.id,
+      developerPortal: buildDeveloperPortalFromScenario(scenario.id),
+      toast: {
+        id: Date.now(),
+        message: `Loaded developer scenario: ${scenario.name}`,
+      },
+    });
+    return scenario.startingRoute;
+  },
+
+  setActiveDeveloperId: (developerId) =>
+    set((state) => {
+      const developer = state.developerPortal.developers.find(
+        (item) => item.id === developerId,
+      );
+      return {
+        developerPortal: {
+          ...state.developerPortal,
+          activeDeveloperId: developerId,
+          activeOrganizationId:
+            developer?.organizationId ??
+            state.developerPortal.activeOrganizationId,
+        },
+      };
+    }),
+
+  setActiveDeveloperAppId: (appId) =>
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        activeDeveloperAppId: appId,
+      },
+    })),
+
+  setDeveloperOverride: (key, value) =>
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        overrides: {
+          ...state.developerPortal.overrides,
+          [key]: value,
+        },
+      },
+    })),
+
+  createDeveloperApp: () => {
+    const id = `dapp_${Date.now()}`;
+    const state = get();
+    const app = createEmptyDraftApp(
+      state.developerPortal.activeOrganizationId,
+      id,
+    );
+    set({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: [...state.developerPortal.apps, app],
+        activeDeveloperAppId: id,
+      },
+      toast: { id: Date.now(), message: "Created draft app" },
+    });
+    return id;
+  },
+
+  updateDeveloperApp: (appId, patch) =>
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: patchDeveloperApp(state.developerPortal.apps, appId, patch),
+      },
+    })),
+
+  markDeveloperStepComplete: (appId, step) =>
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: state.developerPortal.apps.map((app) =>
+          app.id === appId ? markStepComplete(app, step) : app,
+        ),
+      },
+    })),
+
+  setReviewFindingStatus: (appId, findingId, status, developerResponse) =>
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: state.developerPortal.apps.map((app) =>
+          app.id === appId
+            ? applyFindingStatus(app, findingId, status, developerResponse)
+            : app,
+        ),
+      },
+    })),
+
+  resubmitDeveloperApp: (appId) => {
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: state.developerPortal.apps.map((app) =>
+          app.id === appId ? buildResubmittedApp(app) : app,
+        ),
+      },
+      toast: { id: Date.now(), message: "App resubmitted for review" },
+    }));
+  },
+
+  approveDeveloperApp: (appId) => {
+    set((state) => ({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: state.developerPortal.apps.map((app) =>
+          app.id === appId ? buildApprovedApp(app) : app,
+        ),
+      },
+      toast: { id: Date.now(), message: "App approved (prototype)" },
+    }));
+  },
+
+  publishDeveloperApp: (appId) => {
+    const state = get();
+    if (state.developerPortal.overrides.publicationFailure) {
+      get().showToast("Publication failed (override enabled)");
+      return;
+    }
+    set({
+      developerPortal: {
+        ...state.developerPortal,
+        apps: state.developerPortal.apps.map((app) =>
+          app.id === appId ? buildPublishedApp(app) : app,
+        ),
+      },
+      toast: { id: Date.now(), message: "App published to marketplace" },
+    });
   },
 
   setActiveUserId: (userId) => set({ activeUserId: userId }),

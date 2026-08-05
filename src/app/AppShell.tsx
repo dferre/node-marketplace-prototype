@@ -23,6 +23,7 @@ import {
   PageChromeProvider,
   usePageChromeOverride,
 } from "./pageChrome";
+import { WalletMenu } from "../components/shared/WalletMenu";
 
 type NavItem = {
   label: string;
@@ -38,7 +39,6 @@ const navItems: NavItem[] = [
   { label: "Installed Apps", to: "/installed", iconKey: "installed" },
   { label: "Rewards", to: "/rewards", iconKey: "rewards" },
   { label: "Activity", to: "/activity", iconKey: "activity" },
-  { label: "Onboarding", to: "/onboarding", iconKey: "onboarding" },
   { label: "Settings", to: "/settings", iconKey: "settings" },
 ];
 
@@ -113,7 +113,7 @@ function AppHeader() {
   const actions = chrome.actions ?? [];
 
   return (
-    <header className="flex min-h-16 shrink-0 flex-wrap items-center justify-between gap-3 border-b border-border-primary px-4 py-3 md:px-6">
+    <header className="flex min-h-14 shrink-0 flex-wrap items-center justify-between gap-3 border-b border-border-primary bg-background-primary px-4 py-3 md:px-6">
       <div className="flex min-w-0 items-center gap-2 md:gap-3">
         <SidebarTrigger aria-label="Open or close navigation" />
         {chrome.backTo ? (
@@ -132,11 +132,11 @@ function AppHeader() {
           </Button>
         ) : null}
         <div className="min-w-0">
-          <p className="truncate text-sm text-text-secondary">
+          <p className="truncate text-xs font-medium text-text-muted">
             Node Marketplace
           </p>
           <p
-            className="truncate text-base font-semibold text-text-primary"
+            className="truncate text-sm font-semibold tracking-tight text-text-primary"
             aria-current="page"
           >
             {pageTitle}
@@ -144,42 +144,41 @@ function AppHeader() {
         </div>
       </div>
 
-      {actions.length > 0 ? (
-        <div className="flex flex-wrap items-center justify-end gap-2">
-          {actions.map((action) => {
-            const variant = action.variant ?? "secondary";
-            if (action.to && !action.disabled) {
-              return (
-                <Button
-                  key={action.id}
-                  asChild
-                  size="sm"
-                  variant={variant}
-                  className="touch-target"
-                >
-                  <Link to={action.to} title={action.title}>
-                    {action.label}
-                  </Link>
-                </Button>
-              );
-            }
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        {actions.map((action) => {
+          const variant = action.variant ?? "secondary";
+          if (action.to && !action.disabled) {
             return (
               <Button
                 key={action.id}
-                type="button"
+                asChild
                 size="sm"
                 variant={variant}
                 className="touch-target"
-                disabled={action.disabled}
-                title={action.title}
-                onClick={action.onClick}
               >
-                {action.label}
+                <Link to={action.to} title={action.title}>
+                  {action.label}
+                </Link>
               </Button>
             );
-          })}
-        </div>
-      ) : null}
+          }
+          return (
+            <Button
+              key={action.id}
+              type="button"
+              size="sm"
+              variant={variant}
+              className="touch-target"
+              disabled={action.disabled}
+              title={action.title}
+              onClick={action.onClick}
+            >
+              {action.label}
+            </Button>
+          );
+        })}
+        <WalletMenu context="operator" />
+      </div>
     </header>
   );
 }
@@ -192,31 +191,37 @@ export function AppShell() {
       <SidebarProvider>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:border focus:border-border-primary focus:bg-background-primary focus:px-4 focus:py-2 focus:text-text-primary"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:rounded-sm focus:bg-background-primary focus:px-4 focus:py-2 focus:text-link-primary focus:shadow-focus"
         >
           Skip to main content
         </a>
 
-        <Sidebar>
-          <SidebarHeader className="gap-2 py-4">
-            <p className="text-base font-bold text-text-primary">
+        <Sidebar className="border-r border-border-primary bg-background">
+          <SidebarHeader className="gap-1 px-3 py-4">
+            <p className="text-sm font-semibold tracking-tight text-text-primary">
               Node Marketplace
             </p>
-            <p className="text-sm text-text-secondary">Prototype</p>
+            <p className="text-xs text-text-muted">Prototype</p>
           </SidebarHeader>
-          <SidebarSeparator />
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarSeparator className="bg-border-primary" />
+          <SidebarContent className="px-2">
+            <SidebarGroup className="p-0">
+              <SidebarGroupLabel className="px-2 text-xs font-medium uppercase tracking-wide text-text-muted">
+                Navigation
+              </SidebarGroupLabel>
               <SidebarGroupContent>
-                <SidebarMenu>
+                <SidebarMenu className="gap-0.5">
                   {navItems.map((item) => {
                     const Icon = navigationIcons[item.iconKey];
                     const active = isNavActive(location.pathname, item);
 
                     return (
                       <SidebarMenuItem key={item.to}>
-                        <SidebarMenuButton asChild isActive={active}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={active}
+                          className="rounded-sm text-text-secondary hover:bg-background-tertiary hover:text-text-primary data-[active=true]:bg-background-tertiary data-[active=true]:font-medium data-[active=true]:text-text-primary"
+                        >
                           <NavLink to={item.to} end={item.end}>
                             <Icon
                               pack={active ? "filled" : "basic"}
@@ -235,12 +240,12 @@ export function AppShell() {
           </SidebarContent>
         </Sidebar>
 
-        <SidebarInset>
+        <SidebarInset className="bg-background">
           <AppHeader />
           <main
             id="main-content"
             tabIndex={-1}
-            className="flex flex-1 flex-col p-4 outline-none md:p-6"
+            className="flex flex-1 flex-col gap-4 p-4 outline-none md:gap-6 md:p-6"
           >
             <Outlet />
           </main>

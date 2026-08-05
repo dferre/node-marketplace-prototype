@@ -20,7 +20,7 @@ Success means reviewers can complete the primary vertical slice and exercise see
 
 ## Positioning
 
-Unlike a production marketplace or a generic admin dashboard, this product’s mechanism is **scenario-driven local simulation**: typed fixtures, compatibility evaluation, and a shareable debugger that can force states (offline, unavailable services, updates, permission changes) while the UI stays a Relume black-and-white wireframe.
+Unlike a production marketplace or a generic admin dashboard, this product’s mechanism is **scenario-driven local simulation**: typed fixtures, compatibility evaluation, and a shareable debugger that can force states (offline, unavailable services, updates, permission changes). The visual system follows a Vercel-inspired Operate language (Geist, soft borders, achromatic canvas).
 
 ## Operating Context
 
@@ -44,7 +44,7 @@ Unlike a production marketplace or a generic admin dashboard, this product’s m
 - No backend, database, auth provider, wallet/RPC, or real node connections; all behavior is local Zustand + fixtures.
 - Do not invent production pricing, customers, or live reward guarantees; rewards are estimates with eligibility caveats.
 - Do not hide incompatible or already-installed nodes; do not treat partial success as total failure.
-- Visual system for this prototype is **Relume UI wireframe** (black-and-white tokens, Boxicons only)—not a high-fidelity brand redesign unless later explicitly requested.
+- Visual system for this prototype is **Vercel-inspired Operate UI** (Geist, `#FAFAFA` canvas, soft borders, blue focus accent) built on Relume primitives with Boxicons—see `DESIGN.md`.
 - Undecided: eventual production brand identity, real backend/API contracts, and native apps.
 
 ## Brand Commitments
@@ -52,7 +52,7 @@ Unlike a production marketplace or a generic admin dashboard, this product’s m
 - Product name in UI: **Node Marketplace** (prototype).
 - Voice: clear, operator-facing, benefits before deep infrastructure jargon; explain failures with cause and next step.
 - Iconography: Boxicons (basic outline pack by default).
-- Binding visual constraint for current work: Relume wireframe system and tokens; no parallel UI library.
+- Binding visual constraint for current work: Quiet Deploy / Vercel Operate tokens in `DESIGN.md`; Relume UI remains the component primitive layer; Boxicons only; no parallel UI library.
 
 ## Evidence on Hand
 
@@ -67,7 +67,7 @@ Unlike a production marketplace or a generic admin dashboard, this product’s m
 1. **Explainability first** — Compatibility and failures always show requirement vs node value and a next action.
 2. **Fleet reality** — Multi-node selection, offline queueing, and partial outcomes are first-class, not edge footnotes.
 3. **Scenario honesty** — Visible UI derives from fixtures/store/overrides; screens do not hardcode separate demo scripts.
-4. **Wireframe clarity over polish** — Prefer complete, testable flows in Relume B&W over decorative UI.
+4. **Operate clarity over ornament** — Prefer complete, testable flows in the Quiet Deploy system over decorative chrome.
 5. **Rewards without misleading claims** — Estimates and eligibility stay separate from technical compatibility.
 
 ## Accessibility & Inclusion

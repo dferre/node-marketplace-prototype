@@ -20,9 +20,9 @@ export const apps: MarketplaceApp[] = [
     primaryBenefit: "Earn rewards by providing secure storage capacity.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Capacity, uptime, and demand based",
-      estimateLabel: "15–30 SOVR monthly per 500 GB",
+      estimateLabel: "15–30 OPT monthly per 500 GB",
       paymentFrequency: "Weekly",
       guaranteed: false,
       eligibilityNotes: [
@@ -92,9 +92,9 @@ export const apps: MarketplaceApp[] = [
     primaryBenefit: "Earn rewards by completing compute jobs.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Work completed",
-      estimateLabel: "20–85 SOVR monthly",
+      estimateLabel: "20–85 OPT monthly",
       paymentFrequency: "Per completed job",
       guaranteed: false,
       assumptions: [
@@ -147,9 +147,9 @@ export const apps: MarketplaceApp[] = [
       "Support decentralized network traffic and earn bandwidth-based rewards.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Bandwidth and uptime based",
-      estimateLabel: "10–40 SOVR monthly",
+      estimateLabel: "10–40 OPT monthly",
       paymentFrequency: "Weekly",
       guaranteed: false,
     },
@@ -245,9 +245,9 @@ export const apps: MarketplaceApp[] = [
     primaryBenefit: "Support public data preservation and network resilience.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Storage and availability based",
-      estimateLabel: "8–22 SOVR monthly",
+      estimateLabel: "8–22 OPT monthly",
       paymentFrequency: "Monthly",
       guaranteed: false,
     },
@@ -294,7 +294,7 @@ export const apps: MarketplaceApp[] = [
     primaryBenefit: "Earn rewards by improving decentralized media delivery.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Delivery and demand based",
       estimateUnavailable: true,
       estimateLabel: "Currently unavailable",
@@ -343,9 +343,9 @@ export const apps: MarketplaceApp[] = [
     primaryBenefit: "Earn rewards by processing AI workloads.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Work completed and hardware based",
-      estimateLabel: "30–120 SOVR monthly",
+      estimateLabel: "30–120 OPT monthly",
       paymentFrequency: "Per completed job",
       guaranteed: false,
       assumptions: [
@@ -446,9 +446,9 @@ export const apps: MarketplaceApp[] = [
       "Support decentralized applications with searchable blockchain data.",
     rewards: {
       available: true,
-      token: "SOVR",
+      token: "OPT",
       type: "Query volume and uptime based",
-      estimateLabel: "12–45 SOVR monthly",
+      estimateLabel: "12–45 OPT monthly",
       paymentFrequency: "Monthly",
       guaranteed: false,
       eligibilityNotes: ["Eligibility dependent on usage and uptime"],

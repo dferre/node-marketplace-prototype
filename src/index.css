@@ -2,21 +2,173 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
+  :root {
+    --geist-background: #fafafa;
+    --geist-foreground: #171717;
+    --geist-secondary: #666666;
+    --geist-muted: #8f8f8f;
+    --geist-border: #eaeaea;
+    --geist-hover: #ebebeb;
+    --geist-accent: #0072f5;
+    --geist-radius: 6px;
+    --geist-radius-lg: 12px;
+    --header-height: 64px;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
   }
 
   body {
+    font-family:
+      Geist,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      sans-serif;
+    font-feature-settings: "liga";
+    background-color: var(--geist-background);
+    color: var(--geist-foreground);
     padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(0, 114, 245, 0.16);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0072f5;
+  }
+
+  h1 {
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  h2,
+  h3 {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  /* Map legacy Relume bold to Vercel three-weight rule */
+  .font-bold {
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .border-border-primary,
+  .border-border {
+    border-color: var(--geist-border) !important;
+  }
+
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  [role="combobox"],
+  [role="listbox"],
+  [role="dialog"],
+  [role="menu"] {
+    border-radius: var(--geist-radius);
+  }
+
+  button[data-variant="primary"],
+  .bg-background-alternative {
+    border-radius: var(--geist-radius);
+  }
+
+  button:not(:disabled):hover {
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .surface-card {
+    background: #ffffff;
+    border: 1px solid var(--geist-border);
+    border-radius: var(--geist-radius-lg);
+  }
+
+  .surface-inset {
+    background: #f2f2f2;
+    border-radius: var(--geist-radius);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 9999px;
+    background: currentColor;
+  }
+
+  /* Relume sidebar → Vercel soft nav */
+  [data-sidebar="sidebar"] {
+    background: var(--geist-background) !important;
+    border-right: 1px solid var(--geist-border) !important;
+  }
+
+  [data-sidebar="menu-button"] {
+    border-radius: var(--geist-radius) !important;
+    color: #4d4d4d !important;
+  }
+
+  [data-sidebar="menu-button"]:hover {
+    background: var(--geist-hover) !important;
+    color: var(--geist-foreground) !important;
+  }
+
+  [data-sidebar="menu-button"][data-active="true"] {
+    background: var(--geist-hover) !important;
+    color: var(--geist-foreground) !important;
+    font-weight: 500 !important;
+  }
+
+  [data-sidebar="separator"] {
+    background: var(--geist-border) !important;
+  }
+
+  .border-black,
+  .border-neutral-black {
+    border-color: var(--geist-border) !important;
+  }
+
+  /* Soften common page panels that still use Relume hard frames */
+  main > section,
+  main > div.flex > section,
+  main [class*="border border-border-primary"],
+  main [class*="border-border-primary bg-background"] {
+    border-radius: var(--geist-radius-lg);
   }
 }
 
 @layer utilities {
-  /*
-   * Coarse pointers (phones/tablets): enlarge interactive controls to ~44px
-   * without changing fine-pointer desktop density.
-   */
   @media (pointer: coarse) {
     button,
     [type="button"],
