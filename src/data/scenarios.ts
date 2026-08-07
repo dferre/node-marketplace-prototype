@@ -34,15 +34,85 @@ function statuses(
   );
 }
 
+/** Realistic installed-app seed for the default eight-node fleet (browse/manage). */
+const defaultFleetInstalledAppIdsByNode: Record<string, string[]> = {
+  node_denver_01: [
+    "app_atlas_storage",
+    "app_sentinel_monitor",
+    "app_forge_compute",
+  ],
+  node_home: ["app_sentinel_monitor", "app_backup_vault"],
+  node_cloud_04: [
+    "app_atlas_storage",
+    "app_sentinel_monitor",
+    "app_relay_network",
+  ],
+  node_archive: ["app_sentinel_monitor", "app_backup_vault"],
+  node_offline_07: ["app_atlas_storage", "app_sentinel_monitor"],
+  node_legacy: [],
+  node_limited_bandwidth: ["app_sentinel_monitor", "app_stream_cache"],
+  node_restricted_region: ["app_sentinel_monitor"],
+};
+
+const defaultFleetDeployments = [
+  createDeployment({
+    id: "dep_atlas_default",
+    appId: "app_atlas_storage",
+    nodeIds: ["node_denver_01", "node_cloud_04", "node_offline_07"],
+    version: "2.4.1",
+  }),
+  createDeployment({
+    id: "dep_sentinel_default",
+    appId: "app_sentinel_monitor",
+    nodeIds: [
+      "node_denver_01",
+      "node_home",
+      "node_cloud_04",
+      "node_archive",
+      "node_offline_07",
+      "node_limited_bandwidth",
+      "node_restricted_region",
+    ],
+    version: "4.0.3",
+  }),
+  createDeployment({
+    id: "dep_forge_default",
+    appId: "app_forge_compute",
+    nodeIds: ["node_denver_01"],
+    version: "1.8.0",
+  }),
+  createDeployment({
+    id: "dep_relay_default",
+    appId: "app_relay_network",
+    nodeIds: ["node_cloud_04"],
+    version: "3.1.2",
+  }),
+  createDeployment({
+    id: "dep_backup_default",
+    appId: "app_backup_vault",
+    nodeIds: ["node_home", "node_archive"],
+    version: "5.2.0",
+  }),
+  createDeployment({
+    id: "dep_stream_default",
+    appId: "app_stream_cache",
+    nodeIds: ["node_limited_bandwidth"],
+    version: "2.0.0",
+  }),
+];
+
 export const scenarios: PrototypeScenario[] = [
   {
     id: "default-marketplace",
     name: "Default marketplace",
-    description: "Multi-node owner browsing the marketplace with Atlas Storage.",
+    description:
+      "Multi-node owner with a mixed fleet already running several apps.",
     userId: "multi-node-owner",
     appId: "app_atlas_storage",
     nodeFleetId: "default-fleet",
     startingRoute: "/marketplace",
+    installedAppIdsByNode: defaultFleetInstalledAppIdsByNode,
+    deployments: defaultFleetDeployments,
   },
   {
     id: "no-nodes",
@@ -92,6 +162,38 @@ export const scenarios: PrototypeScenario[] = [
     appId: "app_atlas_storage",
     nodeFleetId: "no-compatible-fleet",
     startingRoute: "/marketplace/apps/app_atlas_storage",
+  },
+  {
+    id: "upgrade-self-hosted",
+    name: "Upgrade self-hosted node",
+    description:
+      "Legacy self-hosted node lacks Atlas capacity — instruct user to upgrade host, then recheck.",
+    userId: "multi-node-owner",
+    appId: "app_atlas_storage",
+    nodeFleetId: "no-compatible-fleet",
+    startingRoute:
+      "/nodes/node_legacy/upgrade?appId=app_atlas_storage",
+  },
+  {
+    id: "upgrade-provider-billing",
+    name: "Upgrade provider node (billing)",
+    description:
+      "Underpowered Nimbus cloud node — automated provider upgrade with provider-account charge note.",
+    userId: "multi-node-owner",
+    appId: "app_atlas_storage",
+    nodeFleetId: "provider-underpowered-fleet",
+    startingRoute:
+      "/nodes/node_cloud_04/upgrade?appId=app_atlas_storage",
+  },
+  {
+    id: "upgrade-provider-manual",
+    name: "Upgrade provider node (manual)",
+    description:
+      "ArchiveCo lacks SSD and does not support auto-upgrade — checklist + recheck.",
+    userId: "multi-node-owner",
+    appId: "app_atlas_storage",
+    nodeFleetId: "provider-manual-fleet",
+    startingRoute: "/nodes/node_archive/upgrade?appId=app_atlas_storage",
   },
   {
     id: "mixed-compatibility",
