@@ -1,4 +1,5 @@
-import { Badge, Button } from "@relume_io/relume-ui";
+import { Badge } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { marketplaceIcons } from "../../icons/iconMap";
 import type { Node, NodeInstallationStatus } from "../../types/prototype";
 import { formatStageLabel } from "../../utils/installationSelection";

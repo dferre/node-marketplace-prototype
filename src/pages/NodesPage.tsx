@@ -1,5 +1,4 @@
 import {
-  Button,
   Input,
   Label,
   Select,
@@ -8,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@relume_io/relume-ui";
+import { Button } from "../components/ui/Button";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";

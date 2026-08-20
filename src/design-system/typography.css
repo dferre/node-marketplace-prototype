@@ -1,0 +1,543 @@
+/* Named Figma text styles. Use these classes — never ad-hoc text-2xl font-bold.
+ * Unlayered so unused styles still ship (they are the catalog, not generated utilities).
+ */
+.text-display-2xl-regular {
+  font-family: var(--font-display);
+  font-size: var(--font-size-72);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0em;
+}
+
+.text-display-2xl-medium {
+  font-family: var(--font-display);
+  font-size: var(--font-size-72);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0em;
+}
+
+.text-display-2xl-semibold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-72);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0em;
+}
+
+.text-display-2xl-bold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-72);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0em;
+}
+
+.text-display-xl-regular {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 72px;
+  letter-spacing: 0em;
+}
+
+.text-display-xl-medium {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 72px;
+  letter-spacing: 0em;
+}
+
+.text-display-xl-semibold {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 72px;
+  letter-spacing: -0.02em;
+}
+
+.text-display-xl-bold {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 72px;
+  letter-spacing: 0em;
+}
+
+.text-display-lg-regular {
+  font-family: var(--font-display);
+  font-size: var(--font-size-48);
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: 0em;
+}
+
+.text-display-lg-medium {
+  font-family: var(--font-display);
+  font-size: var(--font-size-48);
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: 0em;
+}
+
+.text-display-lg-semibold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-48);
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+}
+
+.text-display-lg-bold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-48);
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: 0em;
+}
+
+.text-display-md-regular {
+  font-family: var(--font-display);
+  font-size: var(--font-size-36);
+  font-weight: 400;
+  line-height: 44px;
+  letter-spacing: 0em;
+}
+
+.text-display-md-medium {
+  font-family: var(--font-display);
+  font-size: var(--font-size-36);
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: 0em;
+}
+
+.text-display-md-semibold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-36);
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.text-display-md-bold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-36);
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: 0em;
+}
+
+.text-display-sm-regular {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0em;
+}
+
+.text-display-sm-medium {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: 0em;
+}
+
+.text-display-sm-semibold {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0em;
+}
+
+.text-display-sm-bold {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: 0em;
+}
+
+.text-display-sm-medium-italic {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-display-xs-regular {
+  font-family: var(--font-display);
+  font-size: var(--font-size-24);
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+}
+
+.text-display-xs-medium {
+  font-family: var(--font-display);
+  font-size: var(--font-size-24);
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+}
+
+.text-display-xs-semibold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-24);
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0em;
+}
+
+.text-display-xs-bold {
+  font-family: var(--font-display);
+  font-size: var(--font-size-24);
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+}
+
+.text-display-xs-medium-italic {
+  font-family: var(--font-display);
+  font-size: var(--font-size-24);
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-xl-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+
+.text-text-xl-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+
+.text-text-xl-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+
+.text-text-xl-bold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+
+.text-text-xl-regular-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-xl-medium-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-xl-semibold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-xl-bold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-xl-regular-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-lg-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+.text-text-lg-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+.text-text-lg-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+.text-text-lg-bold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+.text-text-lg-regular-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-lg-medium-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-lg-semibold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-lg-bold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-lg-regular-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-lg-medium-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-md-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+.text-text-md-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+.text-text-md-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+.text-text-md-bold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+.text-text-md-regular-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-md-medium-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-md-semibold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-md-bold-italic {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  font-style: italic;
+}
+
+.text-text-md-regular-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-md-medium-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-sm-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+.text-text-sm-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+.text-text-sm-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+.text-text-sm-bold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+
+.text-text-sm-regular-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-sm-medium-underlined {
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-decoration: underline;
+}
+
+.text-text-xs-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-12);
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.text-text-xs-medium {
+  font-family: var(--font-body);
+  font-size: var(--font-size-12);
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.text-text-xs-semibold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-12);
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.text-text-xs-bold {
+  font-family: var(--font-body);
+  font-size: var(--font-size-12);
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+}

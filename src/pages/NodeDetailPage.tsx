@@ -1,6 +1,5 @@
 import {
   Badge,
-  Button,
   Select,
   SelectContent,
   SelectItem,
@@ -17,6 +16,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@relume_io/relume-ui";
+import { Button } from "../components/ui/Button";
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";

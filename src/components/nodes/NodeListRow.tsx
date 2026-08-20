@@ -1,4 +1,5 @@
-import { Badge, Button } from "@relume_io/relume-ui";
+import { Badge } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 import { navigationIcons } from "../../icons/iconMap";
 import type { Node } from "../../types/prototype";

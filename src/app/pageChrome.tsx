@@ -235,22 +235,7 @@ export function getDefaultPageChrome(pathname: string): PageChromeConfig {
   }
 
   if (pathname === "/marketplace") {
-    return {
-      actions: [
-        {
-          id: "search",
-          label: "Search apps",
-          to: "/marketplace/search",
-          variant: "primary",
-        },
-        {
-          id: "installed",
-          label: "Installed apps",
-          to: "/installed",
-          variant: "secondary",
-        },
-      ],
-    };
+    return {};
   }
 
   if (pathname.match(/^\/installed\/[^/]+\/nodes\//)) {

@@ -87,6 +87,11 @@ const SettingsPage = lazy(() =>
     default: module.SettingsPage,
   })),
 );
+const WalletPage = lazy(() =>
+  import("../pages/WalletPage").then((module) => ({
+    default: module.WalletPage,
+  })),
+);
 const OnboardingHubPage = lazy(() =>
   import("../pages/onboarding/OnboardingHubPage").then((module) => ({
     default: module.OnboardingHubPage,
@@ -170,6 +175,7 @@ export function AppRouter() {
               element={<OnboardingFlowPage />}
             />
             <Route path="settings" element={<SettingsPage />} />
+            <Route path="wallet" element={<WalletPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

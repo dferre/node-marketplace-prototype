@@ -1,4 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { marketplaceIcons } from "../../icons/iconMap";

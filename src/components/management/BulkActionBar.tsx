@@ -1,4 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 
 type BulkActionBarProps = {

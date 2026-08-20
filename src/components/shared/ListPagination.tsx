@@ -1,4 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 
 type ListPaginationProps = {
   page: number;

@@ -1,6 +1,125 @@
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/inter/wght-italic.css";
+@import "@fontsource-variable/archivo/wght.css";
+@import "@fontsource-variable/archivo/wght-italic.css";
+@import "./design-system/tokens.css";
+@import "./design-system/typography.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Relume paints [data-sidebar=sidebar] with bg-background-primary (white). */
+[data-sidebar="sidebar"] {
+  background-color: var(--color-background-primary-base);
+}
+
+.app-sidebar-item,
+.app-sidebar-item:link,
+.app-sidebar-item:visited {
+  font-family: var(--font-body);
+  font-size: var(--font-size-16);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--color-text-primary) 50%, transparent) !important;
+  background-color: transparent;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.app-sidebar-glyph {
+  background-color: currentColor;
+  -webkit-mask: var(--app-sidebar-glyph) center / contain no-repeat;
+  mask: var(--app-sidebar-glyph) center / contain no-repeat;
+}
+
+.app-sidebar-item-footer {
+  font-size: var(--font-size-14);
+}
+
+.app-sidebar-item:hover,
+.app-sidebar-item[aria-current="page"],
+.app-sidebar-item[aria-current="page"]:link,
+.app-sidebar-item[aria-current="page"]:visited,
+.app-sidebar-item[aria-current="page"]:hover {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-background-primary-hover) !important;
+}
+
+.prototype-debugger-panel {
+  width: calc(var(--spacing-96) * 4);
+  max-height: 75vh;
+}
+
+.prototype-debugger-list {
+  max-height: calc(var(--spacing-96) * 2);
+}
+
+.prototype-debugger-style-list {
+  max-height: 52vh;
+}
+
+.prototype-debugger-toast {
+  width: min(calc(var(--spacing-96) * 4), calc(100% - var(--spacing-32)));
+}
+
+.app-header-glyph {
+  background-color: currentColor;
+  -webkit-mask: var(--app-header-glyph) center / contain no-repeat;
+  mask: var(--app-header-glyph) center / contain no-repeat;
+}
+
+.app-header-search {
+  width: min(100%, calc(var(--spacing-96) * 2 + var(--spacing-56)));
+}
+
+.app-wallet-glyph {
+  background-color: currentColor;
+  -webkit-mask: var(--app-wallet-glyph) center / contain no-repeat;
+  mask: var(--app-wallet-glyph) center / contain no-repeat;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+
+.app-wallet-drawer {
+  width: min(100%, calc(var(--spacing-96) * 4 + var(--spacing-56)));
+  animation: app-wallet-drawer-in 200ms ease-out;
+}
+
+.app-wallet-qr {
+  width: calc(var(--spacing-96) * 2 + var(--spacing-56));
+  height: calc(var(--spacing-96) * 2 + var(--spacing-56));
+}
+
+.app-wallet-success-mark {
+  width: calc(var(--spacing-64) + var(--spacing-16));
+  height: calc(var(--spacing-64) + var(--spacing-16));
+}
+
+.app-featured-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.app-featured-track {
+  display: flex;
+  gap: var(--spacing-16);
+}
+
+.app-featured-slide {
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - (var(--spacing-16) * 3)) / 4);
+  min-width: 0;
+}
+
+@keyframes app-wallet-drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 
 @layer base {
   html {
@@ -8,6 +127,9 @@
   }
 
   body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-secondary-base);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }

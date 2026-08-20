@@ -1,6 +1,6 @@
-import { Button } from "@relume_io/relume-ui";
 import { useEffect } from "react";
 import { usePrototypeStore } from "../../store/prototypeStore";
+import { debuggerBtnClass } from "./debuggerChrome";
 
 export function PrototypeToast() {
   const toast = usePrototypeStore((state) => state.toast);
@@ -16,21 +16,20 @@ export function PrototypeToast() {
 
   return (
     <div
-      className="fixed bottom-20 left-1/2 z-[110] w-[min(28rem,calc(100%-2rem))] -translate-x-1/2 border-2 border-border-primary bg-background-primary p-3 shadow-none md:bottom-6"
+      className="prototype-debugger-toast fixed bottom-20 left-1/2 z-[110] -translate-x-1/2 rounded-08 border border-border-base bg-background-secondary-base p-4 md:bottom-6"
       role="status"
       aria-live="polite"
     >
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm text-text-primary">{toast.message}</p>
-        <Button
+        <p className="text-text-sm-regular text-text-primary">{toast.message}</p>
+        <button
           type="button"
-          variant="link"
-          size="link"
+          className={`${debuggerBtnClass} border-0 bg-transparent px-2 py-1`}
           onClick={clearToast}
           aria-label="Dismiss notification"
         >
           Dismiss
-        </Button>
+        </button>
       </div>
     </div>
   );

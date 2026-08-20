@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -7,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import type { MarketplaceApp } from "../../types/prototype";
 
 type UpdatePermissionsDialogProps = {

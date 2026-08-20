@@ -35,7 +35,8 @@ export type DebuggerTab =
   | "installation"
   | "system"
   | "debug"
-  | "onboarding";
+  | "onboarding"
+  | "style";
 
 export type OnboardingFlowId =
   | "account"

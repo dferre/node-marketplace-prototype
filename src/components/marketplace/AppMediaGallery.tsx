@@ -1,4 +1,5 @@
-import { Badge, Button } from "@relume_io/relume-ui";
+import { Badge } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { useState } from "react";
 import type { AppGalleryFrame } from "../../data/appSocialProof";
 import { marketplaceIcons } from "../../icons/iconMap";

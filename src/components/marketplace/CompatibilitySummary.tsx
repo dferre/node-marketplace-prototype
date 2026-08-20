@@ -1,4 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { CompatibilityResult, Node } from "../../types/prototype";

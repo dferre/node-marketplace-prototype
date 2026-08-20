@@ -1,6 +1,100 @@
-import type { MarketplaceApp } from "../types/prototype";
+import type {
+  AppCategory,
+  AppPermission,
+  AppRewards,
+  MarketplaceApp,
+  NodeType,
+  ResourceIntensity,
+} from "../types/prototype";
 
-export const apps: MarketplaceApp[] = [
+const ALL_NODE_TYPES: NodeType[] = ["standard", "pro", "cloud", "enterprise"];
+
+const DEFAULT_PERMISSIONS: AppPermission[] = [
+  { id: "cpu", label: "Use CPU resources" },
+  { id: "memory", label: "Use memory" },
+  { id: "storage", label: "Use allocated storage" },
+  { id: "bandwidth", label: "Use network bandwidth" },
+  { id: "continuous", label: "Run continuously" },
+  { id: "wallet", label: "Access public payout wallet address" },
+];
+
+function catalogApp(draft: {
+  id: string;
+  name: string;
+  slug: string;
+  developerId: string;
+  developerName: string;
+  category: AppCategory;
+  tags: string[];
+  version: string;
+  shortDescription: string;
+  primaryBenefit: string;
+  fullDescription?: string;
+  resourceIntensity?: ResourceIntensity;
+  developerStatus?: MarketplaceApp["developerStatus"];
+  status?: MarketplaceApp["status"];
+  rewards?: Partial<AppRewards> | false;
+  allowedNodeTypes?: NodeType[];
+  minCpuCores?: number;
+  minMemoryGb?: number;
+  minStorageGb?: number;
+  minBandwidthMbps?: number;
+  requiresGpu?: boolean;
+  requiresPublicIp?: boolean;
+  setupRequired?: boolean;
+  setupNotes?: string[];
+  permissions?: AppPermission[];
+}): MarketplaceApp {
+  return {
+    id: draft.id,
+    name: draft.name,
+    slug: draft.slug,
+    developerId: draft.developerId,
+    developerName: draft.developerName,
+    developerStatus: draft.developerStatus ?? "verified",
+    category: draft.category,
+    tags: draft.tags,
+    status: draft.status ?? "published",
+    version: draft.version,
+    resourceIntensity: draft.resourceIntensity ?? "medium",
+    shortDescription: draft.shortDescription,
+    fullDescription:
+      draft.fullDescription ??
+      `${draft.shortDescription} Operators set resource limits during setup and can stop the app at any time.`,
+    primaryBenefit: draft.primaryBenefit,
+    rewards:
+      draft.rewards === false
+        ? { available: false, guaranteed: false }
+        : {
+            available: true,
+            token: "SOVR",
+            type: "Uptime and usage based",
+            estimateLabel: "8–28 SOVR monthly",
+            paymentFrequency: "Weekly",
+            guaranteed: false,
+            ...draft.rewards,
+          },
+    requirements: {
+      allowedNodeTypes: draft.allowedNodeTypes ?? ALL_NODE_TYPES,
+      architectures: ["x86_64", "arm64"],
+      minCpuCores: draft.minCpuCores ?? 2,
+      minMemoryGb: draft.minMemoryGb ?? 4,
+      minStorageGb: draft.minStorageGb ?? 20,
+      minBandwidthMbps: draft.minBandwidthMbps ?? 50,
+      minSoftwareVersion: "2.3",
+      requiresGpu: draft.requiresGpu ?? false,
+      requiresPublicIp: draft.requiresPublicIp ?? false,
+    },
+    permissions: draft.permissions ?? DEFAULT_PERMISSIONS,
+    setupRequired: draft.setupRequired ?? false,
+    setupNotes: draft.setupNotes,
+    securityReviewStatus: "reviewed",
+    documentationUrl: "#",
+    supportUrl: "#",
+  };
+}
+
+const seedApps: MarketplaceApp[] = [
   {
     id: "app_atlas_storage",
     name: "Atlas Storage",
@@ -274,6 +368,7 @@ export const apps: MarketplaceApp[] = [
     ],
     setupRequired: true,
     securityReviewStatus: "reviewed",
+    featured: true,
   },
   {
     id: "app_stream_cache",
@@ -376,6 +471,7 @@ export const apps: MarketplaceApp[] = [
     ],
     setupRequired: true,
     securityReviewStatus: "reviewed",
+    featured: true,
   },
   {
     id: "app_backup_vault",
@@ -425,6 +521,7 @@ export const apps: MarketplaceApp[] = [
       "Encryption password or approved key method",
     ],
     securityReviewStatus: "reviewed",
+    featured: true,
   },
   {
     id: "app_chain_indexer",
@@ -522,6 +619,476 @@ export const apps: MarketplaceApp[] = [
     replacementAppId: "app_forge_compute",
   },
 ];
+
+const extraApps: MarketplaceApp[] = [
+  catalogApp({
+    id: "app_cold_shard",
+    name: "Cold Shard",
+    slug: "cold-shard",
+    developerId: "dev_harbor",
+    developerName: "Harbor Labs",
+    category: "storage",
+    tags: ["Cold storage", "archival", "low bandwidth"],
+    version: "1.6.2",
+    resourceIntensity: "low",
+    shortDescription:
+      "Hold encrypted archival shards that are rarely retrieved but must stay available.",
+    primaryBenefit: "Earn rewards for durable long-term storage.",
+    rewards: {
+      type: "Capacity and durability based",
+      estimateLabel: "6–18 SOVR monthly per 1 TB",
+      paymentFrequency: "Monthly",
+    },
+    minStorageGb: 1000,
+    minBandwidthMbps: 25,
+    setupRequired: true,
+    setupNotes: ["Allocated capacity", "Retrieval window", "Reward wallet"],
+  }),
+  catalogApp({
+    id: "app_mirror_drive",
+    name: "Mirror Drive",
+    slug: "mirror-drive",
+    developerId: "dev_northwind",
+    developerName: "Northwind Systems",
+    category: "storage",
+    tags: ["Replication", "availability", "storage"],
+    version: "2.1.0",
+    shortDescription:
+      "Replicate encrypted file sets across participating nodes for higher availability.",
+    primaryBenefit: "Support redundant file availability and earn storage rewards.",
+    minStorageGb: 250,
+    minBandwidthMbps: 100,
+    setupRequired: true,
+  }),
+  catalogApp({
+    id: "app_object_mesh",
+    name: "Object Mesh",
+    slug: "object-mesh",
+    developerId: "dev_lattice",
+    developerName: "Lattice Collective",
+    category: "storage",
+    tags: ["Object storage", "S3 compatible", "high capacity"],
+    version: "0.8.4",
+    resourceIntensity: "high",
+    shortDescription:
+      "Serve object storage buckets for apps that need cheap, location-aware persistence.",
+    primaryBenefit: "Earn rewards by hosting object storage for network apps.",
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 4,
+    minMemoryGb: 8,
+    minStorageGb: 500,
+    setupRequired: true,
+  }),
+  catalogApp({
+    id: "app_pixel_forge",
+    name: "Pixel Forge",
+    slug: "pixel-forge",
+    developerId: "dev_frame",
+    developerName: "Frameworks",
+    category: "compute",
+    tags: ["Rendering", "GPU", "media jobs"],
+    version: "3.0.1",
+    resourceIntensity: "high",
+    shortDescription:
+      "Pick up distributed rendering jobs for stills, motion, and preview frames.",
+    primaryBenefit: "Earn rewards by completing render jobs.",
+    rewards: {
+      type: "Work completed",
+      estimateLabel: "18–70 SOVR monthly",
+      paymentFrequency: "Per completed job",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 8,
+    minMemoryGb: 16,
+    minStorageGb: 80,
+    requiresGpu: true,
+    setupRequired: true,
+    setupNotes: ["Max GPU usage", "Job size limit", "Quiet hours"],
+  }),
+  catalogApp({
+    id: "app_batch_runner",
+    name: "Batch Runner",
+    slug: "batch-runner",
+    developerId: "dev_queue",
+    developerName: "Queueform",
+    category: "compute",
+    tags: ["Batch jobs", "scheduled compute", "CPU"],
+    version: "1.4.8",
+    shortDescription:
+      "Run scheduled data-processing batches when your node would otherwise sit idle.",
+    primaryBenefit: "Earn rewards from queued CPU work without a GPU.",
+    rewards: {
+      type: "Work completed",
+      estimateLabel: "10–36 SOVR monthly",
+    },
+    minCpuCores: 4,
+    minMemoryGb: 8,
+  }),
+  catalogApp({
+    id: "app_mesh_beacon",
+    name: "Mesh Beacon",
+    slug: "mesh-beacon",
+    developerId: "dev_beacon",
+    developerName: "Beacon Guild",
+    category: "networking",
+    tags: ["Discovery", "peers", "low resource use"],
+    version: "2.7.0",
+    resourceIntensity: "low",
+    shortDescription:
+      "Advertise reachable peers and help new nodes find healthy routes on the mesh.",
+    primaryBenefit: "Improve network discovery and earn light bandwidth rewards.",
+    rewards: {
+      type: "Uptime based",
+      estimateLabel: "4–12 SOVR monthly",
+    },
+    minCpuCores: 1,
+    minMemoryGb: 2,
+    minStorageGb: 5,
+    minBandwidthMbps: 25,
+  }),
+  catalogApp({
+    id: "app_exit_gateway",
+    name: "Exit Gateway",
+    slug: "exit-gateway",
+    developerId: "dev_harbor",
+    developerName: "Harbor Labs",
+    category: "networking",
+    tags: ["Routing", "privacy", "public IP"],
+    version: "1.9.3",
+    resourceIntensity: "medium",
+    shortDescription:
+      "Provide an approved exit hop for encrypted traffic leaving the private mesh.",
+    primaryBenefit: "Earn bandwidth rewards for operating a public exit hop.",
+    rewards: {
+      type: "Bandwidth and uptime based",
+      estimateLabel: "14–48 SOVR monthly",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minBandwidthMbps: 250,
+    requiresPublicIp: true,
+    setupRequired: true,
+    setupNotes: ["Monthly bandwidth cap", "Allowed destinations", "Abuse reporting"],
+  }),
+  catalogApp({
+    id: "app_pulse_dns",
+    name: "Pulse DNS",
+    slug: "pulse-dns",
+    developerId: "dev_pulse",
+    developerName: "Pulse Registry",
+    category: "networking",
+    tags: ["DNS", "resolution", "infrastructure"],
+    version: "4.2.1",
+    shortDescription:
+      "Answer decentralized name lookups and cache records closer to local users.",
+    primaryBenefit: "Support name resolution and earn query-based rewards.",
+    rewards: {
+      type: "Query volume and uptime based",
+      estimateLabel: "7–24 SOVR monthly",
+    },
+    requiresPublicIp: true,
+    minBandwidthMbps: 50,
+  }),
+  catalogApp({
+    id: "app_key_guard",
+    name: "Key Guard",
+    slug: "key-guard",
+    developerId: "dev_sentinel",
+    developerName: "Sentinel Systems",
+    category: "security",
+    tags: ["Keys", "policy", "low resource use"],
+    version: "2.3.0",
+    resourceIntensity: "low",
+    shortDescription:
+      "Enforce signing policy and isolate approved keys from other apps on the node.",
+    primaryBenefit: "Harden key handling without exposing seed phrases.",
+    rewards: false,
+    minCpuCores: 1,
+    minMemoryGb: 1,
+    minStorageGb: 2,
+    minBandwidthMbps: 10,
+    setupRequired: true,
+    setupNotes: ["Allowed apps", "Approval policy", "Alert destination"],
+  }),
+  catalogApp({
+    id: "app_packet_guard",
+    name: "Packet Guard",
+    slug: "packet-guard",
+    developerId: "dev_northwind",
+    developerName: "Northwind Systems",
+    category: "security",
+    tags: ["Firewall", "intrusion detection", "alerts"],
+    version: "1.5.6",
+    shortDescription:
+      "Inspect node traffic patterns and flag unusual inbound or outbound activity.",
+    primaryBenefit: "Catch suspicious traffic before it affects other apps.",
+    rewards: false,
+    minCpuCores: 2,
+    minMemoryGb: 4,
+    setupRequired: true,
+  }),
+  catalogApp({
+    id: "app_metric_lake",
+    name: "Metric Lake",
+    slug: "metric-lake",
+    developerId: "dev_vector",
+    developerName: "Vector Indexing",
+    category: "data",
+    tags: ["Telemetry", "metrics", "observability"],
+    version: "2.2.4",
+    shortDescription:
+      "Collect anonymized node metrics and serve them to approved network dashboards.",
+    primaryBenefit: "Earn rewards for contributing operational telemetry.",
+    rewards: {
+      type: "Retention and query based",
+      estimateLabel: "5–16 SOVR monthly",
+    },
+    minStorageGb: 80,
+  }),
+  catalogApp({
+    id: "app_graph_index",
+    name: "Graph Index",
+    slug: "graph-index",
+    developerId: "dev_lattice",
+    developerName: "Lattice Collective",
+    category: "data",
+    tags: ["Graph data", "relationships", "queries"],
+    version: "0.6.9",
+    resourceIntensity: "high",
+    shortDescription:
+      "Maintain a queryable graph of public on-chain relationships for other apps.",
+    primaryBenefit: "Support graph queries and earn index-uptime rewards.",
+    rewards: {
+      type: "Query volume and uptime based",
+      estimateLabel: "11–40 SOVR monthly",
+      paymentFrequency: "Monthly",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 6,
+    minMemoryGb: 12,
+    minStorageGb: 400,
+    developerStatus: "pending",
+  }),
+  catalogApp({
+    id: "app_transcode_bay",
+    name: "Transcode Bay",
+    slug: "transcode-bay",
+    developerId: "dev_stream",
+    developerName: "StreamGrid",
+    category: "media",
+    tags: ["Transcoding", "video", "GPU optional"],
+    version: "1.8.0",
+    resourceIntensity: "high",
+    shortDescription:
+      "Convert uploaded media into delivery-ready renditions for nearby streaming apps.",
+    primaryBenefit: "Earn rewards by transcoding media for the network.",
+    rewards: {
+      type: "Work completed",
+      estimateLabel: "16–55 SOVR monthly",
+      paymentFrequency: "Per completed job",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 8,
+    minMemoryGb: 16,
+    minStorageGb: 200,
+    minBandwidthMbps: 150,
+  }),
+  catalogApp({
+    id: "app_thumb_cache",
+    name: "Thumb Cache",
+    slug: "thumb-cache",
+    developerId: "dev_frame",
+    developerName: "Frameworks",
+    category: "media",
+    tags: ["Images", "CDN", "caching"],
+    version: "2.5.3",
+    resourceIntensity: "low",
+    shortDescription:
+      "Store and serve image thumbnails close to users so apps load media faster.",
+    primaryBenefit: "Earn delivery rewards for popular image traffic.",
+    rewards: {
+      type: "Delivery and demand based",
+      estimateLabel: "6–22 SOVR monthly",
+    },
+    minStorageGb: 120,
+    minBandwidthMbps: 100,
+  }),
+  catalogApp({
+    id: "app_model_host",
+    name: "Model Host",
+    slug: "model-host",
+    developerId: "dev_neural",
+    developerName: "Neural Commons",
+    category: "ai",
+    tags: ["Inference", "models", "GPU"],
+    version: "1.1.2",
+    resourceIntensity: "high",
+    shortDescription:
+      "Keep approved inference models warm and serve encrypted results to callers.",
+    primaryBenefit: "Earn rewards by hosting AI models on supported hardware.",
+    rewards: {
+      type: "Work completed and hardware based",
+      estimateLabel: "24–90 SOVR monthly",
+      paymentFrequency: "Per completed job",
+    },
+    allowedNodeTypes: ["pro", "enterprise"],
+    minCpuCores: 8,
+    minMemoryGb: 24,
+    minStorageGb: 150,
+    requiresGpu: true,
+    setupRequired: true,
+  }),
+  catalogApp({
+    id: "app_dataset_tuner",
+    name: "Dataset Tuner",
+    slug: "dataset-tuner",
+    developerId: "dev_science",
+    developerName: "Open Science Collective",
+    category: "ai",
+    tags: ["Fine-tuning", "federated", "research"],
+    version: "0.4.1",
+    shortDescription:
+      "Join federated fine-tuning rounds using local data that never leaves the node.",
+    primaryBenefit: "Contribute private training capacity without sharing raw data.",
+    rewards: {
+      type: "Work completed",
+      estimateLabel: "12–38 SOVR monthly",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 6,
+    minMemoryGb: 16,
+    minStorageGb: 80,
+    developerStatus: "pending",
+    status: "published-limited",
+  }),
+  catalogApp({
+    id: "app_log_shipper",
+    name: "Log Shipper",
+    slug: "log-shipper",
+    developerId: "dev_vault",
+    developerName: "VaultWorks",
+    category: "utility",
+    tags: ["Logs", "export", "operations"],
+    version: "3.3.1",
+    resourceIntensity: "low",
+    shortDescription:
+      "Forward sanitized node and app logs to a destination you control.",
+    primaryBenefit: "Keep an off-node copy of operational logs.",
+    rewards: false,
+    minCpuCores: 1,
+    minMemoryGb: 2,
+    minStorageGb: 10,
+    minBandwidthMbps: 10,
+    setupRequired: true,
+    setupNotes: ["Destination", "Retention", "Redaction rules"],
+  }),
+  catalogApp({
+    id: "app_clock_mesh",
+    name: "Clock Mesh",
+    slug: "clock-mesh",
+    developerId: "dev_pulse",
+    developerName: "Pulse Registry",
+    category: "utility",
+    tags: ["Time sync", "NTP", "reliability"],
+    version: "1.0.5",
+    resourceIntensity: "low",
+    shortDescription:
+      "Keep node clocks aligned with a mesh of signed time sources.",
+    primaryBenefit: "Reduce timestamp drift across your fleet.",
+    rewards: false,
+    minCpuCores: 1,
+    minMemoryGb: 1,
+    minStorageGb: 1,
+    minBandwidthMbps: 5,
+  }),
+  catalogApp({
+    id: "app_snapshot_tool",
+    name: "Snapshot Tool",
+    slug: "snapshot-tool",
+    developerId: "dev_vault",
+    developerName: "VaultWorks",
+    category: "utility",
+    tags: ["Snapshots", "recovery", "disk"],
+    version: "2.0.2",
+    shortDescription:
+      "Schedule disk snapshots of selected app volumes for faster local recovery.",
+    primaryBenefit: "Recover faster after a bad update or node fault.",
+    rewards: false,
+    minStorageGb: 40,
+    setupRequired: true,
+    setupNotes: ["Volumes", "Schedule", "Retention"],
+  }),
+  catalogApp({
+    id: "app_rpc_gateway",
+    name: "RPC Gateway",
+    slug: "rpc-gateway",
+    developerId: "dev_vector",
+    developerName: "Vector Indexing",
+    category: "infrastructure",
+    tags: ["RPC", "developers", "public endpoint"],
+    version: "2.8.0",
+    shortDescription:
+      "Expose a rate-limited JSON-RPC endpoint for supported public chains.",
+    primaryBenefit: "Earn rewards for serving developer RPC traffic.",
+    rewards: {
+      type: "Query volume and uptime based",
+      estimateLabel: "15–52 SOVR monthly",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 4,
+    minMemoryGb: 8,
+    minStorageGb: 200,
+    requiresPublicIp: true,
+    setupRequired: true,
+  }),
+  catalogApp({
+    id: "app_light_validator",
+    name: "Light Validator",
+    slug: "light-validator",
+    developerId: "dev_archive",
+    developerName: "Public Ledger Institute",
+    category: "infrastructure",
+    tags: ["Consensus", "light client", "verification"],
+    version: "1.2.7",
+    shortDescription:
+      "Follow consensus as a light client and attest to headers without a full archive.",
+    primaryBenefit: "Help verify the chain with modest hardware.",
+    rewards: {
+      type: "Uptime and attestation based",
+      estimateLabel: "9–26 SOVR monthly",
+    },
+    allowedNodeTypes: ["pro", "cloud", "enterprise"],
+    minCpuCores: 4,
+    minMemoryGb: 8,
+    minStorageGb: 100,
+    minBandwidthMbps: 100,
+  }),
+  catalogApp({
+    id: "app_container_yard",
+    name: "Container Yard",
+    slug: "container-yard",
+    developerId: "dev_queue",
+    developerName: "Queueform",
+    category: "infrastructure",
+    tags: ["Containers", "workloads", "isolation"],
+    version: "0.9.0",
+    resourceIntensity: "high",
+    shortDescription:
+      "Run approved container workloads in isolation when the node has spare capacity.",
+    primaryBenefit: "Earn rewards by hosting signed container jobs.",
+    rewards: {
+      type: "Work completed",
+      estimateLabel: "13–44 SOVR monthly",
+    },
+    allowedNodeTypes: ["pro", "enterprise"],
+    minCpuCores: 6,
+    minMemoryGb: 12,
+    minStorageGb: 80,
+    developerStatus: "pending",
+    status: "published-limited",
+  }),
+];
+
+export const apps: MarketplaceApp[] = [...seedApps, ...extraApps];
 
 export function getAppById(id: string): MarketplaceApp | undefined {
   return apps.find((app) => app.id === id);

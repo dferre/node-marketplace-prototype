@@ -1,0 +1,35 @@
+---
+description: Enforce the Webstack Figma design system — tokens, type styles, and components only. Never invent colors, type, spacing, or primitives.
+alwaysApply: true
+---
+
+# Webstack design system
+
+Canonical source: [Webstack Design System](https://www.figma.com/design/wBO8pB6A3RmgqTh5JAxrUn) plus [`src/design-system/tokens.json`](src/design-system/tokens.json) and [`src/design-system/text-styles.json`](src/design-system/text-styles.json). CSS variables live in `tokens.css`. The app design file is for layout later — do not invent tokens from it.
+
+## Never
+
+- Raw hex / rgb / `bg-[#…]` / `text-[rgb(…)]`
+- Ad-hoc type: `text-2xl font-bold`, `text-[15px]`, random font families
+- Arbitrary spacing or radius: `p-[13px]`, `gap-[7px]`, `rounded-[3px]`
+- New Relume primitives (`Button`, `Input`, `Dialog`, …) — Relume on existing screens is legacy
+- One-off buttons, inputs, badges, or cards
+- New CSS values that are not in the catalog
+
+## Always
+
+- **Color:** token classes mapped from Figma (`bg-background-primary-base`, `text-text-secondary`, `border-border-primary`, `bg-webstack-pink`, `bg-primitives-red`)
+- **Type:** named utilities from `text-styles.json` (`text-display-xs-semibold`, `text-md-regular`). Display = `--font-display` (Archivo). Body = `--font-body` (Inter).
+- **Space:** 4px scale (`p-4` → `--spacing-16`). **Radius:** `rounded-08`, `rounded-full`, etc.
+- **Missing token:** add it in Figma first, then `tokens.json` / `tokens.css`. Never invent a value in a component.
+- **New UI primitives:** Untitled UI (next pass). Until then, style with tokens only.
+
+```tsx
+// BAD
+<h1 className="text-2xl font-bold text-[#111]">Title</h1>
+<div className="rounded-[10px] p-[13px] bg-[#f7f7f7]" />
+
+// GOOD
+<h1 className="text-display-xs-semibold text-text-primary">Title</h1>
+<div className="rounded-08 p-4 bg-background-secondary-base" />
+```

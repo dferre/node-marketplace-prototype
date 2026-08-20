@@ -1,5 +1,4 @@
 import {
-  Button,
   Checkbox,
   Input,
   Label,
@@ -39,6 +38,17 @@ import {
   buildScenarioUrl,
   pickStateSnapshot,
 } from "../../utils/scenarioUrl";
+import {
+  debuggerBtnClass,
+  debuggerFieldClass,
+  debuggerHeadingClass,
+  debuggerHelpClass,
+  debuggerLabelClass,
+  debuggerSectionClass,
+  debuggerTabActiveClass,
+  debuggerTabIdleClass,
+} from "./debuggerChrome";
+import { StyleEditor } from "./StyleEditor";
 
 const TABS: { id: DebuggerTab; label: string }[] = [
   { id: "scenario", label: "Scenario" },
@@ -46,6 +56,7 @@ const TABS: { id: DebuggerTab; label: string }[] = [
   { id: "installation", label: "Installation" },
   { id: "system", label: "System" },
   { id: "onboarding", label: "Onboarding" },
+  { id: "style", label: "Style" },
   { id: "debug", label: "Debug" },
 ];
 
@@ -163,31 +174,33 @@ function DebuggerPanelBody() {
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap gap-1" role="tablist" aria-label="Debugger sections">
         {TABS.map((tab) => (
-          <Button
+          <button
             key={tab.id}
             type="button"
-            size="sm"
-            variant={activeTab === tab.id ? "primary" : "secondary"}
-            className="px-3 py-1 text-xs"
+            className={
+              activeTab === tab.id ? debuggerTabActiveClass : debuggerTabIdleClass
+            }
             role="tab"
             aria-selected={activeTab === tab.id}
             onClick={() => setDebuggerTab(tab.id)}
           >
             {tab.label}
-          </Button>
+          </button>
         ))}
       </div>
 
       {activeTab === "scenario" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
-          <h3 className="text-sm font-semibold text-text-primary">Scenario</h3>
+        <section className={debuggerSectionClass}>
+          <h3 className={debuggerHeadingClass}>Scenario</h3>
           <div className="flex flex-col gap-2">
-            <Label htmlFor="scenario-select">Active scenario</Label>
+            <Label htmlFor="scenario-select" className={debuggerLabelClass}>
+              Active scenario
+            </Label>
             <Select
               value={scenarioId}
               onValueChange={(value) => applyScenario(value)}
             >
-              <SelectTrigger id="scenario-select">
+              <SelectTrigger id="scenario-select" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select scenario" />
               </SelectTrigger>
               <SelectContent>
@@ -198,31 +211,32 @@ function DebuggerPanelBody() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-sm text-text-secondary">
+            <p className={debuggerHelpClass}>
               {scenarios.find((item) => item.id === scenarioId)?.description}
             </p>
           </div>
-          <Button
+          <button
             type="button"
-            variant="secondary"
-            size="sm"
+            className={debuggerBtnClass}
             onClick={() => {
               resetPrototypeState();
               navigate(scenarios[0]?.startingRoute ?? "/marketplace");
             }}
           >
             Reset
-          </Button>
+          </button>
         </section>
       ) : null}
 
       {activeTab === "data" ? (
         <div className="flex flex-col gap-3">
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
-            <h3 className="text-sm font-semibold text-text-primary">User</h3>
-            <Label htmlFor="user-select">Active user</Label>
+          <section className={`${debuggerSectionClass} gap-2`}>
+            <h3 className={debuggerHeadingClass}>User</h3>
+            <Label htmlFor="user-select" className={debuggerLabelClass}>
+              Active user
+            </Label>
             <Select value={activeUserId} onValueChange={setActiveUserId}>
-              <SelectTrigger id="user-select">
+              <SelectTrigger id="user-select" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select user" />
               </SelectTrigger>
               <SelectContent>
@@ -233,17 +247,19 @@ function DebuggerPanelBody() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-sm text-text-secondary">
+            <p className={debuggerHelpClass}>
               {activeUser?.role ?? "No user selected"} · can install:{" "}
               {activeUser?.canInstallApps ? "yes" : "no"}
             </p>
           </section>
 
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
-            <h3 className="text-sm font-semibold text-text-primary">App</h3>
-            <Label htmlFor="app-select">Active app</Label>
+          <section className={`${debuggerSectionClass} gap-2`}>
+            <h3 className={debuggerHeadingClass}>App</h3>
+            <Label htmlFor="app-select" className={debuggerLabelClass}>
+              Active app
+            </Label>
             <Select value={activeAppId} onValueChange={setActiveAppId}>
-              <SelectTrigger id="app-select">
+              <SelectTrigger id="app-select" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select app" />
               </SelectTrigger>
               <SelectContent>
@@ -254,17 +270,19 @@ function DebuggerPanelBody() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-sm text-text-secondary">
+            <p className={debuggerHelpClass}>
               {activeApp?.category ?? "n/a"} · {activeApp?.status ?? "n/a"} ·{" "}
               {activeApp?.resourceIntensity ?? "n/a"} resource
             </p>
           </section>
 
-          <section className="flex flex-col gap-2 border border-border-primary bg-background-primary p-3">
-            <h3 className="text-sm font-semibold text-text-primary">Node fleet</h3>
-            <Label htmlFor="fleet-select">Active fleet</Label>
+          <section className={`${debuggerSectionClass} gap-2`}>
+            <h3 className={debuggerHeadingClass}>Node fleet</h3>
+            <Label htmlFor="fleet-select" className={debuggerLabelClass}>
+              Active fleet
+            </Label>
             <Select value={nodeFleetId} onValueChange={setNodeFleetId}>
-              <SelectTrigger id="fleet-select">
+              <SelectTrigger id="fleet-select" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select fleet" />
               </SelectTrigger>
               <SelectContent>
@@ -275,7 +293,7 @@ function DebuggerPanelBody() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-sm text-text-secondary">
+            <p className={debuggerHelpClass}>
               {nodes.length} nodes loaded · compat{" "}
               {compatibilitySummary.compatible}/
               {compatibilitySummary["compatible-with-warnings"]} warn /{" "}
@@ -287,18 +305,20 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "installation" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
-          <h3 className="text-sm font-semibold text-text-primary">Installation</h3>
+        <section className={debuggerSectionClass}>
+          <h3 className={debuggerHeadingClass}>Installation</h3>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="overall-status">Overall result</Label>
+            <Label htmlFor="overall-status" className={debuggerLabelClass}>
+              Overall result
+            </Label>
             <Select
               value={installation.overallStatus}
               onValueChange={(value) =>
                 setOverallInstallationStatus(value as OverallInstallationStatus)
               }
             >
-              <SelectTrigger id="overall-status">
+              <SelectTrigger id="overall-status" className={debuggerFieldClass}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -312,7 +332,9 @@ function DebuggerPanelBody() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="focused-node">Focused node</Label>
+            <Label htmlFor="focused-node" className={debuggerLabelClass}>
+              Focused node
+            </Label>
             <Select
               value={installation.focusedNodeId ?? undefined}
               onValueChange={(value) => {
@@ -322,7 +344,7 @@ function DebuggerPanelBody() {
                 }
               }}
             >
-              <SelectTrigger id="focused-node">
+              <SelectTrigger id="focused-node" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select node" />
               </SelectTrigger>
               <SelectContent>
@@ -336,7 +358,9 @@ function DebuggerPanelBody() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="node-stage">Focused node stage</Label>
+            <Label htmlFor="node-stage" className={debuggerLabelClass}>
+              Focused node stage
+            </Label>
             <Select
               value={
                 installation.focusedNodeId
@@ -353,7 +377,7 @@ function DebuggerPanelBody() {
               }}
               disabled={!installation.focusedNodeId}
             >
-              <SelectTrigger id="node-stage">
+              <SelectTrigger id="node-stage" className={debuggerFieldClass}>
                 <SelectValue placeholder="Select stage" />
               </SelectTrigger>
               <SelectContent>
@@ -367,47 +391,44 @@ function DebuggerPanelBody() {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="button" size="sm" variant="secondary" onClick={playInstallation}>
+            <button type="button" className={debuggerBtnClass} onClick={playInstallation}>
               Play
-            </Button>
-            <Button type="button" size="sm" variant="secondary" onClick={pauseInstallation}>
+            </button>
+            <button type="button" className={debuggerBtnClass} onClick={pauseInstallation}>
               Pause
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              variant="secondary"
-              onClick={advanceInstallation}
-            >
+            </button>
+            <button type="button" className={debuggerBtnClass} onClick={advanceInstallation}>
               Advance one stage
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={completeAllInstallations}
             >
               Complete all
-            </Button>
-            <Button type="button" size="sm" variant="secondary" onClick={failFocusedNode}>
+            </button>
+            <button type="button" className={debuggerBtnClass} onClick={failFocusedNode}>
               Fail selected node
-            </Button>
-            <Button type="button" size="sm" variant="secondary" onClick={resetInstallation}>
+            </button>
+            <button type="button" className={debuggerBtnClass} onClick={resetInstallation}>
               Reset installation
-            </Button>
+            </button>
           </div>
 
-          <p className="text-sm text-text-secondary">
+          <p className={debuggerHelpClass}>
             Selected: {installation.selectedNodeIds.length} · Playing:{" "}
             {installation.isPlaying ? "yes" : "no"}
           </p>
 
-          <ul className="max-h-40 space-y-1 overflow-y-auto text-sm text-text-primary">
+          <ul className="prototype-debugger-list space-y-1 overflow-y-auto text-text-sm-regular text-text-primary">
             {installation.selectedNodeIds.map((nodeId) => {
               const node = nodes.find((item) => item.id === nodeId);
               const stage = installation.nodeStatuses[nodeId]?.stage ?? "not set";
               return (
-                <li key={nodeId} className="border border-border-primary px-2 py-1">
+                <li
+                  key={nodeId}
+                  className="rounded-06 border border-border-base px-2 py-1"
+                >
                   {node?.name ?? nodeId}: {stage}
                 </li>
               );
@@ -417,16 +438,14 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "system" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
-          <h3 className="text-sm font-semibold text-text-primary">
-            System overrides
-          </h3>
+        <section className={debuggerSectionClass}>
+          <h3 className={debuggerHeadingClass}>System overrides</h3>
           <div className="flex flex-col gap-2">
             {(Object.keys(OVERRIDE_LABELS) as (keyof PrototypeOverrides)[]).map(
               (key) => (
                 <label
                   key={key}
-                  className="flex items-center gap-2 text-sm text-text-primary"
+                  className="flex items-center gap-2 text-text-sm-regular text-text-primary"
                 >
                   <Checkbox
                     checked={overrides[key]}
@@ -444,79 +463,70 @@ function DebuggerPanelBody() {
       ) : null}
 
       {activeTab === "onboarding" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
-          <h3 className="text-sm font-semibold text-text-primary">
-            Onboarding jumps
-          </h3>
-          <p className="text-sm text-text-secondary">
+        <section className={debuggerSectionClass}>
+          <h3 className={debuggerHeadingClass}>Onboarding jumps</h3>
+          <p className={debuggerHelpClass}>
             Completed:{" "}
             {onboarding.completedFlows.length
               ? onboarding.completedFlows.join(", ")
               : "none"}
           </p>
-          <p className="text-sm text-text-secondary">
+          <p className={debuggerHelpClass}>
             Dismissed tips:{" "}
             {onboarding.dismissedTips.length
               ? onboarding.dismissedTips.join(", ")
               : "none"}
           </p>
           <div className="flex flex-wrap gap-2">
-            <Button
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => navigate("/onboarding")}
             >
               Hub
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => navigate("/onboarding/account")}
             >
               Account
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => navigate("/onboarding/new-node")}
             >
               New node
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => navigate("/onboarding/import-node")}
             >
               Import node
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => navigate("/onboarding/developer")}
             >
               Developer stub
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() =>
                 navigate("/marketplace/apps/app_atlas_storage/install")
               }
             >
               First-install coach
-            </Button>
+            </button>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => {
                 restoreOnboardingTip("marketplace-basics");
                 restoreOnboardingTip("first-install-coach");
@@ -524,26 +534,27 @@ function DebuggerPanelBody() {
               }}
             >
               Restore tips
-            </Button>
-            <Button
+            </button>
+            <button
               type="button"
-              size="sm"
-              variant="secondary"
+              className={debuggerBtnClass}
               onClick={() => {
                 resetOnboarding();
                 showToast("Onboarding progress reset");
               }}
             >
               Reset onboarding
-            </Button>
+            </button>
           </div>
         </section>
       ) : null}
 
+      {activeTab === "style" ? <StyleEditor /> : null}
+
       {activeTab === "debug" ? (
-        <section className="flex flex-col gap-3 border border-border-primary bg-background-primary p-3">
-          <h3 className="text-sm font-semibold text-text-primary">Debug data</h3>
-          <div className="grid grid-cols-2 gap-2 text-sm text-text-primary">
+        <section className={debuggerSectionClass}>
+          <h3 className={debuggerHeadingClass}>Debug data</h3>
+          <div className="grid grid-cols-2 gap-2 text-text-sm-regular text-text-primary">
             <p>Scenario: {summary.scenarioId}</p>
             <p>Users: {summary.userCount}</p>
             <p>Apps: {summary.appCount}</p>
@@ -553,19 +564,22 @@ function DebuggerPanelBody() {
             <p>Status: {summary.overallStatus}</p>
             <p>Overrides on: {summary.overridesEnabled}</p>
           </div>
-          <Label htmlFor="debug-route">Current path</Label>
+          <Label htmlFor="debug-route" className={debuggerLabelClass}>
+            Current path
+          </Label>
           <Input
             id="debug-route"
             readOnly
             value={window.location.pathname + window.location.search}
+            className={debuggerFieldClass}
           />
           <div className="flex flex-wrap gap-2">
-            <Button type="button" size="sm" variant="secondary" onClick={copyScenarioUrl}>
+            <button type="button" className={debuggerBtnClass} onClick={copyScenarioUrl}>
               Copy scenario URL
-            </Button>
-            <Button type="button" size="sm" variant="secondary" onClick={copyStateJson}>
+            </button>
+            <button type="button" className={debuggerBtnClass} onClick={copyStateJson}>
               Copy state JSON
-            </Button>
+            </button>
           </div>
         </section>
       ) : null}
@@ -593,33 +607,41 @@ export function PrototypeDebugger() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, isNarrow, setDebuggerOpen]);
 
+  const launcher = (
+    <button
+      type="button"
+      className={`${debuggerBtnClass} touch-target`}
+      onClick={isNarrow ? () => setDebuggerOpen(true) : toggleDebugger}
+      aria-expanded={isOpen}
+      aria-controls="prototype-debugger-panel"
+      aria-label={
+        isNarrow
+          ? "Open prototype debugger"
+          : isOpen
+            ? "Close prototype debugger"
+            : "Open prototype debugger"
+      }
+    >
+      <BugIcon pack="basic" size="sm" aria-hidden="true" />
+      Prototype
+    </button>
+  );
+
   if (isNarrow) {
     return (
       <div className="fixed bottom-4 right-4 z-[100]">
         <Sheet open={isOpen} onOpenChange={setDebuggerOpen}>
-          {!isOpen ? (
-            <Button
-              type="button"
-              variant="secondary"
-              size="sm"
-              className="touch-target border-2 border-border-primary bg-background-secondary shadow-none"
-              onClick={() => setDebuggerOpen(true)}
-              aria-expanded={isOpen}
-              aria-controls="prototype-debugger-panel"
-              aria-label="Open prototype debugger"
-            >
-              <BugIcon pack="basic" size="sm" aria-hidden="true" />
-              Prototype
-            </Button>
-          ) : null}
+          {!isOpen ? launcher : null}
           <SheetContent
             side="bottom"
-            className="z-[100] max-h-[85vh] border-t-2 border-border-primary bg-background-secondary"
+            className="z-[100] max-h-[85vh] border-t border-border-base bg-background-secondary-base"
             overlayClassName="z-[90]"
           >
             <SheetHeader>
-              <SheetTitle>Prototype Debugger</SheetTitle>
-              <SheetDescription>
+              <SheetTitle className="text-text-md-semibold text-text-primary">
+                Prototype Debugger
+              </SheetTitle>
+              <SheetDescription className="text-text-sm-regular text-text-secondary">
                 Swap scenarios and fixture state without leaving the wireframe.
               </SheetDescription>
             </SheetHeader>
@@ -637,46 +659,33 @@ export function PrototypeDebugger() {
       {isOpen ? (
         <aside
           id="prototype-debugger-panel"
-          className="flex max-h-[75vh] w-[24rem] flex-col border-2 border-border-primary bg-background-secondary shadow-none"
+          className="prototype-debugger-panel flex flex-col rounded-08 border border-border-base bg-background-secondary-base"
           role="dialog"
           aria-label="Prototype debugger"
         >
-          <div className="flex items-center justify-between border-b border-border-primary px-3 py-2">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between border-b border-border-base px-4 py-3">
+            <div className="flex items-center gap-2 text-text-primary">
               <BugIcon pack="basic" size="sm" aria-hidden="true" />
-              <p className="text-sm font-semibold text-text-primary">
+              <p className="text-text-sm-semibold text-text-primary">
                 Prototype Debugger
               </p>
             </div>
-            <Button
+            <button
               type="button"
-              variant="link"
-              size="link"
+              className="text-text-sm-medium text-text-secondary hover:text-text-primary"
               onClick={() => setDebuggerOpen(false)}
               aria-label="Close prototype debugger"
             >
               Close
-            </Button>
+            </button>
           </div>
-          <div className="overflow-y-auto p-3">
+          <div className="overflow-y-auto p-4">
             <DebuggerPanelBody />
           </div>
         </aside>
       ) : null}
 
-      <Button
-        type="button"
-        variant="secondary"
-        size="sm"
-        className="touch-target border-2 border-border-primary bg-background-secondary shadow-none"
-        onClick={toggleDebugger}
-        aria-expanded={isOpen}
-        aria-controls="prototype-debugger-panel"
-        aria-label={isOpen ? "Close prototype debugger" : "Open prototype debugger"}
-      >
-        <BugIcon pack="basic" size="sm" aria-hidden="true" />
-        Prototype
-      </Button>
+      {launcher}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import {
   Badge,
-  Button,
   Checkbox,
   Input,
   Label,
@@ -16,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { useMemo, useState } from "react";
 import { ListPagination } from "../shared/ListPagination";
 import { marketplaceIcons } from "../../icons/iconMap";

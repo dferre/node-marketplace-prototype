@@ -1,4 +1,5 @@
-import { Badge, Button, Checkbox } from "@relume_io/relume-ui";
+import { Badge, Checkbox } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 import type { DeploymentInstance, Node } from "../../types/prototype";
 import { formatInstanceStatus } from "../../utils/installedApps";

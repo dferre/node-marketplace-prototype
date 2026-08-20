@@ -1,4 +1,4 @@
-import { Button } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import type { ReactNode } from "react";
 import type { OnboardingTipId } from "../../types/prototype";
 import { usePrototypeStore } from "../../store/prototypeStore";

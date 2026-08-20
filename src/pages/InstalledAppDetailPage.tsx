@@ -1,4 +1,5 @@
-import { Badge, Button } from "@relume_io/relume-ui";
+import { Badge } from "@relume_io/relume-ui";
+import { Button } from "../components/ui/Button";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";

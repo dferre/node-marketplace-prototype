@@ -1,5 +1,4 @@
 import {
-  Button,
   Checkbox,
   Input,
   Label,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@relume_io/relume-ui";
+import { Button } from "../ui/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
 import type {
